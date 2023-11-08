@@ -328,8 +328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b15aa8823ab2a6419cac2d0904d742f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumberOfRooms: 10
-  gridSize: 5
+  numberOfRooms: 1
+  gridSize: 1
   roomProfab: {fileID: 392260707}
 --- !u!4 &1532642254
 Transform:
