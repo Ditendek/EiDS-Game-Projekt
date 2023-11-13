@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 392260707}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.53, y: -0.86, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -328,9 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b15aa8823ab2a6419cac2d0904d742f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 1
-  gridSize: 1
-  roomProfab: {fileID: 392260707}
+  numberOfRooms: 20
+  gridSize: 10
+  seed: 360
+  roomPrefab: {fileID: 392260707}
 --- !u!4 &1532642254
 Transform:
   m_ObjectHideFlags: 0

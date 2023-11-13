@@ -6,67 +6,180 @@ public class DungeonGenerator : MonoBehaviour
 {
     public int numberOfRooms = 1;
     public int gridSize = 1;
-    public GameObject roomProfab = null;
+    public int seed = 0;
+    public GameObject roomPrefab = null;
 
-    private int currentNumberOfRooms = 0;
-    private bool[,] roomSpawnedAtGridPosition = null;
+    private Room[,] roomAtGridPosition = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        roomSpawnedAtGridPosition = new bool[gridSize, gridSize];
+        /*foreach(Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }*/
+        
+        roomAtGridPosition = new Room[gridSize, gridSize];
+        /*for(int i = 0; i < gridSize * gridSize; ++i)
+        {
+            roomAtGridPosition[i / gridSize, i % gridSize].roomGameObject = null;
+        }*/
 
-        spawnFromCenter();
+        SpawnTreeFromCenter(seed);
     }
 
-    void spawnAtRandomLocations()
+    /* 
+     * 
+     */
+    void SpawnTreeFromCenter(int seed)
     {
-        for(int i = 0; i < numberOfRooms; i++)
+        Random.InitState(seed);
+
+        int halfGrid = gridSize / 2;
+        Pair pos = new(halfGrid, halfGrid);
+        Room startRoom = new(pos, null);
+        //roomAtGridPosition[halfGrid, halfGrid] = startRoom;
+
+        TreeLikeGeneration(startRoom);
+    }
+
+    /* 
+     * 
+     */
+    void TreeLikeGeneration(Room startingRoom)
+    {
+        Queue<Room> roomQueue = new();
+        roomQueue.Enqueue(startingRoom);
+        Pair[] directions = { new(0, -1), new(1, 0), new(0, 1), new(-1, 0)};
+
+        int currentNumberOfRooms = 0;
+        while(currentNumberOfRooms < numberOfRooms && roomQueue.Count != 0)
         {
-            int xPos = Random.Range(0, gridSize);
-            int yPos = Random.Range(0, gridSize);
+            Room room = roomQueue.Dequeue();
 
-            if(roomSpawnedAtGridPosition[xPos, yPos] == false)
+            if(roomAtGridPosition[room.pos.x, room.pos.y].roomGameObject != null)
             {
-                ++currentNumberOfRooms;
-                instantiateRoom(new Vector2(xPos, yPos));
+                continue;
+            }
 
-                //GameObject room = new GameObject("Room_" + xPos + "_" + yPos);
-                //room.transform.parent = this.transform;
+            List<Direction> neighbors = GetDirectNeighbors(room.pos);
+
+            if(neighbors.Count > 1)
+            {
+                continue;
+            }
+
+            room.roomGameObject = InstantiateRoom(room.pos);
+            roomAtGridPosition[room.pos.x, room.pos.y] = room;
+            currentNumberOfRooms++;
+
+            for(int i = 0; i < 4; ++i)
+            {
+                Pair newPos = room.pos + directions[i];
+
+                if(Random.Range(0f, 1f) <= 0.70f && PositionIsInBounds(newPos) && roomAtGridPosition[newPos.x, newPos.y].roomGameObject == null)
+                {
+                    Room newRoom = new(newPos, null);
+                    roomQueue.Enqueue(newRoom);
+                }
             }
         }
     }
 
-    void spawnFromCenter()
+    /* 
+     * 
+     */
+    List<Direction> GetDirectNeighbors(Pair pos)
     {
-        int halfGrid = gridSize / 2;
-        ArrayList
+        List<Direction> neighbors = new();
 
-        instantiateRoom(new Vector2(halfGrid, halfGrid));
+        if(!PositionIsInBounds(pos))
+        {
+            throw new System.ArgumentOutOfRangeException("Position coordinates (" + pos.x + ", " + pos.y + ") are out of bounds (0 - " + (gridSize - 1) + ")");
+        }
+
+        if(pos.y > 0 && roomAtGridPosition[pos.x, pos.y - 1].roomGameObject != null)
+        {
+            neighbors.Add(Direction.Up);
+        }
+        if(pos.x < gridSize - 1 && roomAtGridPosition[pos.x + 1, pos.y].roomGameObject != null)
+        {
+            neighbors.Add(Direction.Right);
+        }
+        if(pos.y < gridSize - 1 && roomAtGridPosition[pos.x, pos.y + 1].roomGameObject != null)
+        {
+            neighbors.Add(Direction.Down);
+        }
+        if(pos.x > 0 && roomAtGridPosition[pos.x - 1, pos.y].roomGameObject != null)
+        {
+            neighbors.Add(Direction.Left);
+        }
+
+        return neighbors;
     }
 
-    GameObject instantiateRoom(Vector2 position)
+    /* 
+     * 
+     */
+    bool PositionIsInBounds(Pair pos)
     {
-        roomSpawnedAtGridPosition[(int) position.x, (int) position.y] = true;
+        return pos.x >= 0 && pos.x < gridSize && pos.y >= 0 && pos.y < gridSize;
+    }
 
-        GameObject room = Instantiate(roomProfab, this.transform);
-        room.name = "Room_" + (int) position.x + "_" + (int) position.y;
-        room.transform.position = position;
+    /* 
+     * 
+     */
+    GameObject InstantiateRoom(Pair pos)
+    {
+        GameObject room = Instantiate(roomPrefab, this.transform);
+        room.name = "Room_" + pos.x + "_" + pos.y;
+        room.transform.position = new Vector2(pos.x, pos.y);
 
         return room;
     }
 
-    struct EndRoom
+    /* 
+     * 
+     */
+    private struct Room
     {
-        public EndRoom()
+        public Pair pos;
+        public GameObject roomGameObject;
+
+        public Room(Pair pos, GameObject roomGameobject)
         {
-        
+            this.pos = pos;
+            this.roomGameObject = roomGameobject;
         }
     }
 
-    enum Walltype
+    /* 
+     * 
+     */
+    private struct Pair
     {
-        Wall,
-        Door
+        public int x, y;
+
+        public Pair(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public static Pair operator +(Pair a, Pair b)
+        {
+            return new(a.x + b.x, a.y + b.y);
+        }
+    }
+
+    /* 
+     * 
+     */
+    enum Direction
+    {
+        Up = 0,
+        Right = 1,
+        Down = 2,
+        Left = 3
     }
 }
