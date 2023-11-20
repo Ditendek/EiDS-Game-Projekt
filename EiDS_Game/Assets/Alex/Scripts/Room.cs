@@ -8,6 +8,9 @@ public class Room : MonoBehaviour
 
     public Vector2 position;
 
+    private const int roomSizeX = 25; //Isaac: 13, 7 without outer walls
+    private const int roomSizeY = 25;
+
     // Start is called before the first frame update
     void Start()
     {
