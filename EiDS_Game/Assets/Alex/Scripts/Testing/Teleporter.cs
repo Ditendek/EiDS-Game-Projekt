@@ -52,37 +52,15 @@ public class Teleporter : MonoBehaviour
     {
         if(active && collision.gameObject.CompareTag("Player"))
         {
-            ActivateNextRoom();
+            Room.LoadNextRoom(this.transform.parent.gameObject, linkedTeleporter.transform.parent.gameObject);
+
             linkedTeleporter.GetComponent<Teleporter>().active = false;
             collision.gameObject.transform.position = linkedTeleporter.transform.position;
-            DeactivateThisRoom();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         active = true;
-    }
-
-    /*
-     * Activates the room connected to the linked teleporter.
-     */
-    protected void ActivateNextRoom()
-    {
-        if(linkedTeleporter.transform.parent != null)
-        {
-            linkedTeleporter.transform.parent.gameObject.SetActive(true);
-        }
-    }
-
-    /*
-     * Deactivates this room.
-     */
-    protected void DeactivateThisRoom()
-    {
-        if(this.transform.parent != null)
-        {
-            this.transform.parent.gameObject.SetActive(false);
-        }
     }
 }
