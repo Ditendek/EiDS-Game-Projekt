@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IDungeonLayoutGenerator
 {
+    public abstract void ResetToDefaultState();
     public abstract void BuildDungeon();
     public abstract GameObject GetStartRoom();
     public abstract void DeactivateAllRooms();

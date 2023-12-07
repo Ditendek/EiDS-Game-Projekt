@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGenerator
 {
-    private readonly string[] _roomBuildArgs;
-    private readonly GameObject[] _rooms;
+    public int numberOfRooms;
+    public float spawnPropability;
 
-    private readonly float _spawnPropability;
+    private string[] _roomBuildArgs;
+    private GameObject[] _rooms;
 
-    public TreeLikeDungeonLayoutGenerator(int numberOfRooms, float spawnPropability)
-    {
+    public void ResetToDefaultState() {
         _roomBuildArgs = new string[numberOfRooms];
         _rooms = new GameObject[numberOfRooms];
-        _spawnPropability = spawnPropability;
     }
 
     public void BuildDungeon()
@@ -42,10 +41,9 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
                 continue;
             }
 
-            currentNumberOfRooms++;
-
             AddRoomToListOfRooms(currentNumberOfRooms, roomPosition, neighboringRooms);
             roomAtPosition[roomPosition.x, roomPosition.y] = true;
+            currentNumberOfRooms++;
 
             GetNewPossibleRooms(roomQueue, roomPosition, roomAtPosition);
         }
@@ -73,7 +71,7 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
         {
             Vector2Int newRoomPosition = roomPosition + direction;
 
-            if(Random.Range(0f, 1f) <= _spawnPropability &&
+            if(Random.Range(0f, 1f) <= spawnPropability &&
                 PositionIsInBounds(newRoomPosition, roomAtPosition.GetLength(0)) &&
                 roomAtPosition[newRoomPosition.x, newRoomPosition.y] == false)
             {
@@ -84,10 +82,10 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
 
     private void AddRoomToListOfRooms(int id, Vector2Int roomPosition, List<Vector2Int> neighboringRooms)
     {
-        _roomBuildArgs[id] = roomPosition.x + "," + roomPosition.y + " ";
+        _roomBuildArgs[id] = roomPosition.x + " " + roomPosition.y + " ";
         foreach(Vector2Int neighbor in neighboringRooms)
         {
-            _roomBuildArgs[id] += neighbor.x + "," + neighbor.y + " ";
+            _roomBuildArgs[id] += neighbor.x + " " + neighbor.y + " ";
         }
     }
 

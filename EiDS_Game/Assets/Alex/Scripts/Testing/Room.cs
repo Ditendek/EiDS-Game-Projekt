@@ -1,31 +1,52 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
-{
-    List<GameObject> teleporter;
+public class Room : MonoBehaviour {
+    private List<GameObject> teleporter;
 
-    public Vector2 position;
+    public Vector2Int position;
+    //private bool discovered = false;
 
-    private const int roomSizeX = 25; //Isaac: 13, 7 without outer walls
-    private const int roomSizeY = 25;
+    //private const int roomSizeX = 25; //Isaac: 13, 7 without outer walls
+    //private const int roomSizeY = 25;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         teleporter = new List<GameObject>();
     }
 
-    public void BuildRoom()
-    {
-        
+    public void Link(GameObject otherRoom) {
+        Room otherRoomRoomScript = otherRoom.GetComponent<Room>();
+        Vector2Int direction = GetDirectionToOtherRoom(otherRoomRoomScript.position);
+
+        string[] doors = { "upDoor", "rightDoor", "downDoor", "leftDoor" };
+        Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+
+        for(int i = 0; i < 4; i++) {
+            if(direction == directions[i]) {
+                GameObject thisDoor = this.transform.Find(doors[i]).gameObject;
+                GameObject otherDoor = otherRoom.transform.Find(doors[(i + 2) % 4]).gameObject;
+
+                thisDoor.AddComponent<Teleporter>().SetLinkedTeleporter(otherDoor);
+                otherDoor.AddComponent<Teleporter>().SetLinkedTeleporter(thisDoor);
+
+                float c = 80f / 256f;
+                thisDoor.GetComponent<SpriteRenderer>().color = new Color(c, c, c);
+                otherDoor.GetComponent<SpriteRenderer>().color = new Color(c, c, c);
+            }
+        }
+    }
+
+    private Vector2Int GetDirectionToOtherRoom(Vector2Int position) {
+        return position - this.position;
     }
 
     /*
      * Creates teleporter game objects and attaches them to the rooms.
      */
-    public void LinkWithTTo<T>(Room otherRoom) where T : Teleporter
+    /*public void LinkWithTTo<T>(Room otherRoom) where T : Teleporter
     {
         GameObject teleToOtherRoom = new("LinkToRoom" + otherRoom);     // Make teleporter game objects
         GameObject teleToThisRoom = new("LinkToRoom" + this);
@@ -41,14 +62,13 @@ public class Room : MonoBehaviour
 
         teleporter.Add(teleToOtherRoom);
         otherRoom.teleporter.Add(teleToThisRoom);
+    }*/
+
+    public override string ToString() {
+        return "(" + position.x + "," + position.y + ")";
     }
 
-    public override string ToString()
-    {
-        return "(" + (int) position.x + "," + (int) position.y + ")";
-    }
-
-    public void PlaceDoors()
+    /*public void PlaceDoors()
     {
         foreach(GameObject doorGameObject in teleporter)
         {
@@ -61,9 +81,9 @@ public class Room : MonoBehaviour
 
             doorGameObject.transform.position = Vector2.zero + GetDoorPlacementDirection(door.doorFacingDirection) * (DoorIsUpOrDown(door.doorFacingDirection) ? roomSizeY / 2f : roomSizeX / 2f);
         }
-    }
+    }*/
 
-    private Vector2 GetDoorPlacementDirection(Direction direction)
+    /*private Vector2 GetDoorPlacementDirection(Direction direction)
     {
         return direction switch
         {
@@ -73,16 +93,10 @@ public class Room : MonoBehaviour
             Direction.Right => Vector2.right,
             _ => Vector2.zero,
         };
-    }
+    }*/
 
-    private bool DoorIsUpOrDown(Direction direction)
+    /*private bool DoorIsUpOrDown(Direction direction)
     {
         return direction.Equals(Direction.Up) || direction.Equals(Direction.Down);
-    }
-
-    public static void LoadNextRoom(GameObject RoomToUnload, GameObject RoomToLoad)
-    {
-        RoomToUnload.SetActive(false);
-        RoomToLoad.SetActive(true);
-    }
+    }*/
 }
