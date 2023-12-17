@@ -10,10 +10,12 @@ public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator
 
     private GameObject[] roomPrefabs;
     private List<GameObject> buildRooms;
+    private string startRoom;
 
     public void ResetToDefaultState() {
         LoadPrefabsFromFolder();
         buildRooms = new List<GameObject>();
+        startRoom = null;
     }
 
     private void LoadPrefabsFromFolder() {
@@ -26,19 +28,47 @@ public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator
         }
     }
 
-    public GameObject BuildRoom(string arg) {
-        string[] args = arg.Split(' ');
-        string roomName = "Room_" + args[0] + "_" + args[1];
+    public GameObject BuildRoom(string args) {
+        string[] formatedArgs = args.Split(' ');
+        string roomName = "Room_" + formatedArgs[0] + "_" + formatedArgs[1];
 
         GameObject newRoom = Instantiate(roomPrefabs[UnityEngine.Random.Range(0, roomPrefabs.Length)], new Vector2(0, 0), Quaternion.identity, this.transform);
         newRoom.name = roomName;
-        newRoom.GetComponent<Room>().position = new Vector2Int(int.Parse(args[0]), int.Parse(args[1]));
+        newRoom.GetComponent<Room>().ResetRoom();
+        newRoom.GetComponent<Room>().position = new Vector2Int(int.Parse(formatedArgs[0]), int.Parse(formatedArgs[1]));
 
-        ConnectRoomToRooms(newRoom, args);
+        if(newRoomIsTheFirstRoom()) {
+            startRoom = roomName;
+            newRoom.GetComponent<Room>().IsDiscovered = true;
+        }
+
+        if(newRoomIsNextToStartRoom(formatedArgs)) {
+            newRoom.GetComponent<Room>().IsNextToDiscovered = true;
+        }
+
+        ConnectRoomToRooms(newRoom, formatedArgs);
 
         AddRoomToBuildRooms(newRoom);
 
         return newRoom;
+    }
+
+    private bool newRoomIsNextToStartRoom(string[] args) {
+        for(int i = 2; i < args.Length; i++) {
+            if((i + 1) < args.Length && int.TryParse(args[i], out int otherRoomX) && int.TryParse(args[i + 1], out int otherRoomY)) {
+                i++;
+
+                if(startRoom == GetRoomName(otherRoomX, otherRoomY)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool newRoomIsTheFirstRoom() {
+        return buildRooms.Count == 0;
     }
 
     private void ConnectRoomToRooms(GameObject newRoom, string[] args) {
