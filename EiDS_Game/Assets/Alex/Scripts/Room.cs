@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Room : MonoBehaviour {
     public List<GameObject> doors {
@@ -9,6 +10,11 @@ public class Room : MonoBehaviour {
     }
 
     public Vector2Int position;
+    public GameObject minimap = null;
+    public GameObject minimapEquivalent = null;
+    public Sprite currentRoomMinimapSprite;
+    public Sprite enteredBeforeMinimapSprite;
+    public Sprite notEnteredMinimapSprite;
     private bool isDiscovered = false;
     private bool isNextToDiscovered = false;
 
@@ -77,6 +83,36 @@ public class Room : MonoBehaviour {
 
     private Vector2Int GetDirectionToOtherRoom(Vector2Int position) {
         return position - this.position;
+    }
+
+    public void UpdateMinimap() {
+        minimap.transform.position = (Vector3Int) (-position);
+
+        if(minimapEquivalent == null) {
+            minimapEquivalent = new GameObject(name);
+            minimapEquivalent.transform.parent = minimap.transform;
+            minimapEquivalent.transform.localPosition = (Vector3Int) position;
+            minimapEquivalent.layer = LayerMask.NameToLayer("Minimap");
+            minimapEquivalent.AddComponent<SpriteRenderer>();
+        }
+        minimapEquivalent.GetComponent<SpriteRenderer>().sprite = currentRoomMinimapSprite;
+
+        foreach(GameObject doorToNextRoom in doors) {
+            Room nextRoom = doorToNextRoom.GetComponent<Teleporter>().GetLinkedTeleporter().transform.parent.gameObject.GetComponent<Room>();
+
+            if(nextRoom.minimapEquivalent == null) {
+                nextRoom.minimapEquivalent = new GameObject(nextRoom.name);
+                nextRoom.minimapEquivalent.transform.parent = minimap.transform;
+                nextRoom.minimapEquivalent.transform.localPosition = (Vector3Int) nextRoom.position;
+                nextRoom.minimapEquivalent.layer = LayerMask.NameToLayer("Minimap");
+                nextRoom.minimapEquivalent.AddComponent<SpriteRenderer>();
+                nextRoom.minimapEquivalent.GetComponent<SpriteRenderer>().sprite = notEnteredMinimapSprite;
+            }
+
+            if(nextRoom.minimapEquivalent.GetComponent<SpriteRenderer>().sprite.name.Equals(notEnteredMinimapSprite.name) == false) {
+                nextRoom.minimapEquivalent.GetComponent<SpriteRenderer>().sprite = enteredBeforeMinimapSprite;
+            }
+        }
     }
 
     public override string ToString() {

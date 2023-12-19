@@ -889,6 +889,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0}
+  minimap: {fileID: 0}
+  minimapEquivalent: {fileID: 0}
+  currentRoomMinimapSprite: {fileID: 21300000, guid: 2ace264237d6e9449b4ccd46482ed48d, type: 3}
+  enteredBeforeMinimapSprite: {fileID: 21300000, guid: 4b984f4575f6175409739310c474e325, type: 3}
+  notEnteredMinimapSprite: {fileID: 21300000, guid: 6181870be05183f4d85aee41b3bee15a, type: 3}
 --- !u!1 &5750421295436661252
 GameObject:
   m_ObjectHideFlags: 0

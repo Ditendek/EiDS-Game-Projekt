@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Teleporter : MonoBehaviour {
@@ -13,9 +14,6 @@ public class Teleporter : MonoBehaviour {
         AddBoxCollider2DIfNotExistent();
     }
 
-    /*
-     * Adds a BoxCollider2D to the teleporter game object if their is none and makes it a trigger.
-     */
     protected void AddBoxCollider2DIfNotExistent() {
         BoxCollider2D bc = this.GetComponent<BoxCollider2D>();
 
@@ -26,16 +24,10 @@ public class Teleporter : MonoBehaviour {
         bc.isTrigger = true;
     }
 
-    /*
-     * Sets the teleporter.
-     */
     public void SetLinkedTeleporter(GameObject linkedTeleporter) {
         this.linkedTeleporter = linkedTeleporter;
     }
 
-    /*
-     * Returns the teleporter
-     */
     public GameObject GetLinkedTeleporter() {
         return linkedTeleporter;
     }
@@ -43,18 +35,19 @@ public class Teleporter : MonoBehaviour {
     /*
      * Puts the player to the room which is connected to the teleporter.
      */
-    protected void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if(active && collision.gameObject.CompareTag("Player")) {
             linkedTeleporter.GetComponent<Teleporter>().active = false;
             collision.gameObject.transform.position = linkedTeleporter.transform.position;
 
-            setDiscoveryStatus();
+            SetDiscoveryStatus();
+            //UpdateMinimap(linkedTeleporter.transform.parent.gameObject.GetComponent<Room>().position);
 
             LoadNextRoom(this.transform.parent.gameObject, linkedTeleporter.transform.parent.gameObject);
         }
     }
 
-    private void setDiscoveryStatus() {
+    private void SetDiscoveryStatus() {
         linkedTeleporter.transform.parent.gameObject.GetComponent<Room>().IsDiscovered = true;
         foreach(GameObject door in linkedTeleporter.transform.parent.gameObject.GetComponent<Room>().doors) {
             door.transform.parent.gameObject.GetComponent<Room>().IsNextToDiscovered = true;
@@ -64,6 +57,7 @@ public class Teleporter : MonoBehaviour {
     public static void LoadNextRoom(GameObject RoomToUnload, GameObject RoomToLoad) {
         RoomToUnload.SetActive(false);
         RoomToLoad.SetActive(true);
+        RoomToLoad.GetComponent<Room>().UpdateMinimap();
     }
 
     private void OnTriggerExit2D(Collider2D collision) {

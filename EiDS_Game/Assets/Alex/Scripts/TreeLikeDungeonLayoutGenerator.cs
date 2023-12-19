@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGenerator
-{
-    public int numberOfRooms;
+public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGenerator {
+    [SerializeField]
+    private int numberOfRooms;
     public float spawnPropability;
 
     private string[] _roomBuildArgs;
@@ -15,8 +16,7 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
         _rooms = new GameObject[numberOfRooms];
     }
 
-    public void BuildDungeon()
-    {
+    public void BuildDungeon() {
         int gridSize = (int) (2 * System.Math.Sqrt(_roomBuildArgs.Length));
         bool[,] roomAtPosition = new bool[gridSize, gridSize];
 
@@ -26,79 +26,65 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
         GenerationLoop(roomAtPosition, startRoomPosition);
     }
 
-    private void GenerationLoop(bool[,] roomAtPosition, Vector2Int startRoomPosition)
-    {
+    private void GenerationLoop(bool[,] roomAtPosition, Vector2Int startRoomPosition) {
         Queue<Vector2Int> roomQueue = new();
         roomQueue.Enqueue(startRoomPosition);
-
-        for(int currentNumberOfRooms = 0; currentNumberOfRooms < _roomBuildArgs.Length && roomQueue.Count != 0;)
-        {
+        
+        for(int currentNumberOfRooms = 0; currentNumberOfRooms < _roomBuildArgs.Length && roomQueue.Count != 0;) {
             Vector2Int roomPosition = roomQueue.Dequeue();
             List<Vector2Int> neighboringRooms = GetNumberOfNeighboringRooms(roomPosition, roomAtPosition);
 
-            if(roomAtPosition[roomPosition.x, roomPosition.y] == true || neighboringRooms.Count > 1)
-            {
+            if(roomAtPosition[roomPosition.x, roomPosition.y] == true || neighboringRooms.Count > 1) {
                 continue;
             }
 
-            AddRoomToListOfRooms(currentNumberOfRooms, roomPosition, neighboringRooms);
+            AddNewRoomToListOfRooms(currentNumberOfRooms, roomPosition, neighboringRooms);
             roomAtPosition[roomPosition.x, roomPosition.y] = true;
             currentNumberOfRooms++;
 
             GetNewPossibleRooms(roomQueue, roomPosition, roomAtPosition);
         }
 
-        AddEndKeyToLastRoom();
+        AddEndKeyWordToLastRoom();
     }
 
-    private void AddEndKeyToLastRoom()
-    {
-        for(int i = _roomBuildArgs.Length - 1; i >= 0; i--)
-        {
-            if(_roomBuildArgs.Equals("") == false)
-            {
+    private void AddEndKeyWordToLastRoom() {
+        for(int i = _roomBuildArgs.Length - 1; i >= 0; i--) {
+            if(_roomBuildArgs[i] != null) {
                 _roomBuildArgs[i] += "end ";
                 return;
             }
         }
     }
 
-    private void GetNewPossibleRooms(Queue<Vector2Int> roomQueue, Vector2Int roomPosition, bool[,] roomAtPosition)
-    {
+    private void GetNewPossibleRooms(Queue<Vector2Int> roomQueue, Vector2Int roomPosition, bool[,] roomAtPosition) {
         Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 
-        foreach(Vector2Int direction in directions)
-        {
+        foreach(Vector2Int direction in directions) {
             Vector2Int newRoomPosition = roomPosition + direction;
 
             if(Random.Range(0f, 1f) <= spawnPropability &&
                 PositionIsInBounds(newRoomPosition, roomAtPosition.GetLength(0)) &&
-                roomAtPosition[newRoomPosition.x, newRoomPosition.y] == false)
-            {
+                roomAtPosition[newRoomPosition.x, newRoomPosition.y] == false) {
                 roomQueue.Enqueue(newRoomPosition);
             }
         }
     }
 
-    private void AddRoomToListOfRooms(int id, Vector2Int roomPosition, List<Vector2Int> neighboringRooms)
-    {
+    private void AddNewRoomToListOfRooms(int id, Vector2Int roomPosition, List<Vector2Int> neighboringRooms) {
         _roomBuildArgs[id] = roomPosition.x + " " + roomPosition.y + " ";
-        foreach(Vector2Int neighbor in neighboringRooms)
-        {
+        foreach(Vector2Int neighbor in neighboringRooms) {
             _roomBuildArgs[id] += neighbor.x + " " + neighbor.y + " ";
         }
     }
 
-    private List<Vector2Int> GetNumberOfNeighboringRooms(Vector2Int pos, bool[,] roomAtPosition)
-    {
+    private List<Vector2Int> GetNumberOfNeighboringRooms(Vector2Int pos, bool[,] roomAtPosition) {
         List<Vector2Int> neighbors = new();
         Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
-        foreach(Vector2Int direction in directions)
-        {
+        foreach(Vector2Int direction in directions) {
             Vector2Int positionToCheck = pos + direction;
 
-            if(PositionIsInBounds(positionToCheck, roomAtPosition.GetLength(0)) && roomAtPosition[positionToCheck.x, positionToCheck.y] == true)
-            {
+            if(PositionIsInBounds(positionToCheck, roomAtPosition.GetLength(0)) && roomAtPosition[positionToCheck.x, positionToCheck.y] == true) {
                 neighbors.Add(positionToCheck);
             }
         }
@@ -106,29 +92,39 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
         return neighbors;
     }
 
-    private bool PositionIsInBounds(Vector2Int pos, int boundSize)
-    {
+    private bool PositionIsInBounds(Vector2Int pos, int boundSize) {
         return pos.x >= 0 && pos.x < boundSize && pos.y >= 0 && pos.y < boundSize;
     }
 
-    public void BuildRooms(IRoomLayoutGenerator roomLayoutGenerator)
-    {
-        for(int i = 0; i < _roomBuildArgs.Length; i++)
-        {
+    public void BuildRooms(IRoomLayoutGenerator roomLayoutGenerator) {
+        for(int i = 0; i < _roomBuildArgs.Length; i++) {
+            if(_roomBuildArgs[i] == null) {
+                return;
+            }
+
             _rooms[i] = roomLayoutGenerator.BuildRoom(_roomBuildArgs[i]);
         }
     }
 
-    public void DeactivateAllRooms()
-    {
-        for(int i = 0; i < _rooms.Length; i++)
-        {
+    public void DeactivateAllRooms() {
+        for(int i = 0; i < _rooms.Length; i++) {
+            if(_rooms[i] == null) {
+                return;
+            }
+
             _rooms[i].SetActive(false);
         }
     }
 
-    public GameObject GetStartRoom()
-    {
+    public GameObject GetStartRoom() {
         return _rooms[0];
+    }
+
+    public void SetNumberOfRooms(int n) {
+        numberOfRooms = n;
+    }
+
+    public int GetNumberOfRooms() {
+        return numberOfRooms;
     }
 }

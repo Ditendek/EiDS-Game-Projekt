@@ -6,7 +6,9 @@ using UnityEditor;
 using System;
 
 public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator {
-    public string folderPath = "Assets/Alex/Rooms";
+    public string prefabsFolderPath = "Assets/Alex/Rooms";
+    public GameObject minimapGameObject = null;
+    public GameObject NextDungeonLoader = null;
 
     private GameObject[] roomPrefabs;
     private List<GameObject> buildRooms;
@@ -19,7 +21,7 @@ public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator
     }
 
     private void LoadPrefabsFromFolder() {
-        string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { folderPath });
+        string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { prefabsFolderPath });
         roomPrefabs = new GameObject[guids.Length];
 
         for(int i = 0; i < guids.Length; i++) {
@@ -36,6 +38,7 @@ public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator
         newRoom.name = roomName;
         newRoom.GetComponent<Room>().ResetRoom();
         newRoom.GetComponent<Room>().position = new Vector2Int(int.Parse(formatedArgs[0]), int.Parse(formatedArgs[1]));
+        newRoom.GetComponent<Room>().minimap = minimapGameObject;
 
         if(newRoomIsTheFirstRoom()) {
             startRoom = roomName;
@@ -50,7 +53,22 @@ public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator
 
         AddRoomToBuildRooms(newRoom);
 
+        if(IsEndRoom(formatedArgs)) {
+            GameObject nextDungeonLoader = Instantiate(NextDungeonLoader, newRoom.transform);
+            nextDungeonLoader.GetComponent<LoadNextDungeon>().DungeonBuilder = this.gameObject;
+        }
+
         return newRoom;
+    }
+
+    private bool IsEndRoom(string[] args) {
+        for(int i = args.Length - 1; i >= 0; i--) {
+            if(args[i].Equals("end")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private bool newRoomIsNextToStartRoom(string[] args) {

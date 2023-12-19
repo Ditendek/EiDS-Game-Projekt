@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - roomPrefab: {fileID: 3873379865098228484, guid: 47b1a44601c2b4e429996c8db1a55d0b, type: 3}
+  - minimapGameObject: {fileID: 2519344566920032121, guid: 0c265217f430f8a4e9bcfdd8dd70f72c, type: 3}
+  - NextDungeonLoader: {fileID: 1547592842461056144, guid: 9a67b568c4b4d634b9ab7035e4fa07e3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
