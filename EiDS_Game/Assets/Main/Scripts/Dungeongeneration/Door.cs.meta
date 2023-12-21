@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 9b8a5082d050085478e3e065187874a4
+guid: 6e8803d6867b1924bbeefaabb85c36e7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - DungeonBuilder: {fileID: 1768425800854132378, guid: 16e76de9b356ef440adbda0f42bb1018, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
