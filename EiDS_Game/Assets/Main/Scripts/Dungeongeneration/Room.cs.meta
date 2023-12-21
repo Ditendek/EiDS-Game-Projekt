@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 64cdcb868608f7d4282b14c3b366b863
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - minimap: {instanceID: 0}
+  - minimapEquivalent: {instanceID: 0}
+  - currentRoomMinimapSprite: {fileID: 21300000, guid: 2ace264237d6e9449b4ccd46482ed48d, type: 3}
+  - enteredBeforeMinimapSprite: {fileID: 21300000, guid: 4b984f4575f6175409739310c474e325, type: 3}
+  - notEnteredMinimapSprite: {fileID: 21300000, guid: 6181870be05183f4d85aee41b3bee15a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
