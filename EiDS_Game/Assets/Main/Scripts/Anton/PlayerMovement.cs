@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static Vector3 PlayerPosition;
+    public static BoxCollider2D coll;
     //Movement
     public float moveSpeed;
     public Rigidbody2D rb;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         PlayerPosition = transform.position;
+        coll = GetComponent<BoxCollider2D>();
     }
 
     void Update()

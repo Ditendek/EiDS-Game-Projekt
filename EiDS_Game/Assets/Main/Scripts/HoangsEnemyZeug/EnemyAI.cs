@@ -1,3 +1,4 @@
+using Pathfinding;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -38,7 +39,14 @@ public class EnemyAI : MonoBehaviour
 
         startingPosition = transform.position;
         roamPosition = GetRoamingPosition();
-
+        /*
+        GraphNode node1 = AstarPath.active.GetNearest(transform.position).node;
+        GraphNode node2 = AstarPath.active.GetNearest(roamPosition).node;
+        
+        while (!PathUtilities.IsPathPossible(node1, node2))
+        {
+            roamPosition = GetRoamingPosition();
+        }*/
         pathFinding.SetTarget(roamPosition);
 
         lastPosition = transform.position;

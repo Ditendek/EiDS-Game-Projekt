@@ -17,7 +17,7 @@ public class PathFinding : MonoBehaviour
    
 
     //reponsible for creating paths
-    private Seeker seeker;
+    [SerializeField] private Seeker seeker;
     
 
     // Start is called before the first frame update
@@ -25,8 +25,7 @@ public class PathFinding : MonoBehaviour
     {
     //    AstarPath.active.Scan(); //can be used for every room
  
-        seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
+         rb = GetComponent<Rigidbody2D>();
         target = transform.position;
         //update the path every half second
         InvokeRepeating("UpdatePath", 0f, 0.5f);
@@ -34,6 +33,8 @@ public class PathFinding : MonoBehaviour
 
     public void SetTarget(Vector3 targetPosition)
     {
+        if (seeker == null) Debug.Log("Seeker");
+
         if (seeker.IsDone())
             target = targetPosition;
      }
@@ -73,13 +74,13 @@ public class PathFinding : MonoBehaviour
         }
         // if currentWaypoint is greater than the total amount of WayPoints along the path
         //maybe necessary later
-        /*
+        
          if (currentWaypoint >= path.vectorPath.Count)
         {
-            reachedEndOfPath = true;
+         //   reachedEndOfPath = true;
             return;
         }
-        else
+        /*else
         {
             reachedEndOfPath = false;
         }*/

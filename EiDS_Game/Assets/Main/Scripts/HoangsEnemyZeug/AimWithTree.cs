@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
-public class AimWithSpear : AttackMode
+public class AimWithTree : AttackMode
 {
     private Vector3 playerPosition;
     public Transform enemyGFX;
