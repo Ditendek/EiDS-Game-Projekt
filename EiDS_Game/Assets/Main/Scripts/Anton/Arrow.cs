@@ -18,7 +18,7 @@ public class Arrow : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            Debug.Log(damageIncrease);
+          //  Debug.Log(damageIncrease);
             enemyComponent.TakeDamage(10 + damageIncrease);
         }
 
