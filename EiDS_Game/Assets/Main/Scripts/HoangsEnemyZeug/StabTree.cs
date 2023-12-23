@@ -9,6 +9,7 @@ public class StabTree : MonoBehaviour
     private float timer;
     public float timeToActivate = 3f;
     private CapsuleCollider2D coll;
+    private bool once = true;
      void Start()
     {
         coll = GetComponent<CapsuleCollider2D>();
@@ -18,17 +19,19 @@ public class StabTree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer>= timeToActivate)
+        if (once)
         {
-            transform.localScale = new Vector3(0.7f, 1.2f, 1);
-            if (coll.bounds.Intersects(PlayerMovement.coll.bounds))
+            timer += Time.deltaTime;
+            if (timer >= timeToActivate)
             {
-                coll.isTrigger = false;
-              //  Debug.Log("AUFGESPIEEEEESST");
+                Grow();
+                once = false;
             }
-
         }
-
+    }
+    void Grow()
+    {
+        transform.localScale = new Vector3(0.7f, 1f, 1);
+        transform.position = transform.position + new Vector3(0, 0.6f, 0);
     }
 }
