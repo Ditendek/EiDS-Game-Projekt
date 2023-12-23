@@ -6,6 +6,8 @@ public class PlayerAttack : MonoBehaviour
 {
     private bool canAttack = true; 
     private Animator anim;
+    public float firerate;
+    float nextfire;
     
     void Start()
     {
@@ -40,14 +42,22 @@ public class PlayerAttack : MonoBehaviour
 
     void ChangeAnimationState(string newState)
     {
-        anim.Play(newState,0,0);
-        canAttack = false;
-        StartCoroutine(AttackCooldown());
+        if (Time.time > nextfire)
+        {
+            nextfire = Time.time + firerate;
+            anim.Play(newState, 0, 0);
+        }
+
+        
+
+
+       // canAttack = false;
+       // StartCoroutine(AttackCooldown());
     }
 
-    IEnumerator AttackCooldown()
+   /* IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(0.25f);
         canAttack = true;
-    }  
+    }  */
 }
