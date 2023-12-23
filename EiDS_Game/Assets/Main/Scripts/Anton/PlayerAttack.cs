@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     public float firerate;
     float nextfire;
+    private bool isAttacking = false;
     
     void Start()
     {
@@ -20,22 +21,34 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow))
             {
+                isAttacking = true;
                 ChangeAnimationState("Attack_Back_Bow");
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
+                isAttacking = true;
                 ChangeAnimationState("Attack_Front_Bow");
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
+                isAttacking = true;
                 ChangeAnimationState("Attack_Right_Bow");
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
+                isAttacking = true;
                 ChangeAnimationState("Attack_Left_Bow");
             }
+            else
+            {
+                isAttacking = false;
+            }
+        }
+        else
+        {
+            isAttacking = false;
         }
     }
 
