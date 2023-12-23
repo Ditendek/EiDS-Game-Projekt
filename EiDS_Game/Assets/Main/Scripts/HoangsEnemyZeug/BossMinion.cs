@@ -11,17 +11,8 @@ public class BossMinion : MonoBehaviour
         spawner = GameObject.FindGameObjectsWithTag("Boss")[0].GetComponent<BossSpawner>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveFromSpawner()
     {
-       
-    }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            spawner.spawnedEnemies.Remove(gameObject);
-            Destroy(gameObject);
-        }
+        spawner.spawnedEnemies.Remove(gameObject);
     }
 }
