@@ -12,7 +12,7 @@ public class StabTree : MonoBehaviour
      void Start()
     {
         coll = GetComponent<CapsuleCollider2D>();
-        Destroy(gameObject, timeToActivate);
+        Destroy(gameObject, 3f);
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class StabTree : MonoBehaviour
         timer += Time.deltaTime;
         if(timer>= timeToActivate)
         {
-            transform.localScale = new Vector3(0.7f, 1, 1);
+            transform.localScale = new Vector3(0.7f, 1.2f, 1);
             if (coll.bounds.Intersects(PlayerMovement.coll.bounds))
             {
                 coll.isTrigger = false;
