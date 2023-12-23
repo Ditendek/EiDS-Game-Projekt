@@ -23,7 +23,7 @@ public class AimWithTree : AttackMode
 
         OnStab?.Invoke(this, new OnStabEventArgs
         {
-            stabTargetPosition = playerPosition - new Vector3(0, -0.5f, 0)
+            stabTargetPosition = playerPosition + new Vector3(0,-0.75f, 0)
         }) ;
     }
     IEnumerator ScaleOverTime(Transform objectToScale, Vector3 toScale, float duration, bool upScale)

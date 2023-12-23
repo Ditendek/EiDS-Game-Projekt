@@ -34,5 +34,9 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            TakeDamage(10);
+        }
     }
 }

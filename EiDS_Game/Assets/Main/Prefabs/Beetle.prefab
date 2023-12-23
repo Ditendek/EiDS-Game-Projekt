@@ -206,13 +206,14 @@ GameObject:
   - component: {fileID: 55870459560526067}
   - component: {fileID: 8063678679287014535}
   - component: {fileID: 3373596035926096393}
+  - component: {fileID: 4848620288692379492}
   m_Layer: 0
   m_Name: Beetle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8228602635185271330
 Transform:
   m_ObjectHideFlags: 0
@@ -379,6 +380,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pfBullet: {fileID: 4706267175148985569, guid: 77d9ecd52cd51824b940bda8015ff049, type: 3}
+--- !u!114 &4848620288692379492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861281050869839759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0957f8b7fe4c7cf4595bb4ceae4f7449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 30
 --- !u!1 &7233095748898851907
 GameObject:
   m_ObjectHideFlags: 0

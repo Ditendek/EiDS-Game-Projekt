@@ -12,7 +12,7 @@ public class StabTree : MonoBehaviour
      void Start()
     {
         coll = GetComponent<CapsuleCollider2D>();
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, timeToActivate);
     }
 
     // Update is called once per frame
