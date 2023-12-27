@@ -9,6 +9,8 @@ public class Teleporter : MonoBehaviour {
     private GameObject linkedTeleporter;
     [SerializeField]
     private bool active = true;
+    [SerializeField]
+    private Sprite open;
 
     private void Start() {
         AddBoxCollider2DIfNotExistent();
@@ -37,8 +39,12 @@ public class Teleporter : MonoBehaviour {
      */
     private void OnTriggerEnter2D(Collider2D collision) {
         if(active && collision.gameObject.CompareTag("Player")) {
-            linkedTeleporter.GetComponent<Teleporter>().active = false;
-            collision.gameObject.transform.position = linkedTeleporter.transform.position;
+            //linkedTeleporter.GetComponent<Teleporter>().active = false;
+            foreach(Transform child in linkedTeleporter.transform) {
+                if(child.name == "SpawnPoint") {
+                    collision.gameObject.transform.position = child.transform.position;
+                }
+            }
 
             SetDiscoveryStatus();
             //UpdateMinimap(linkedTeleporter.transform.parent.gameObject.GetComponent<Room>().position);
@@ -61,6 +67,6 @@ public class Teleporter : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        active = true;
+        //active = true;
     }
 }
