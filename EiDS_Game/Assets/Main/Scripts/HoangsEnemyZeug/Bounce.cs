@@ -49,6 +49,7 @@ public class Bounce : MonoBehaviour
     }
     public void StartBouncing()
     {
+        trailRenderer.ClonesPerSecond = 30;
         animator.SetTrigger("roll");
         rb.bodyType = RigidbodyType2D.Dynamic;
         SetBounceAmount(0);

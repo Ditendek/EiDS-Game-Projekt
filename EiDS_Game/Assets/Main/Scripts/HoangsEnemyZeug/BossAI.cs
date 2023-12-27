@@ -53,12 +53,10 @@ public class BossAI : MonoBehaviour
                 break;
             case State.Bouncing:
                 bouncer.SetBounceMode(true);
-                trailRenderer.ClonesPerSecond = 30;
                 spawnHelper.enabled = false;
                 break;
             case State.Spawning:
                 bouncer.SetBounceMode(false);
-                trailRenderer.ClonesPerSecond = 0;
                 rb.velocity = new Vector2(0.1f, 0.1f);
                 if (triggerOnce)
                 {
@@ -100,6 +98,7 @@ public class BossAI : MonoBehaviour
         //Switch from bouncing to spawning
         if(!spawnHelper.doneSpawning && bouncer.GetBounceAmount() >=  bouncer.GetMaxBounceAmount())
         {
+            trailRenderer.ClonesPerSecond = 0;
             state = State.Spawning;
             return;
         }
@@ -116,7 +115,7 @@ public class BossAI : MonoBehaviour
     IEnumerator Wait(float seconds)
     {
          yield return new WaitForSeconds(seconds);
-         //switch from damage phase to bouncing again
+        //switch from damage phase to bouncing again
         spawnHelper.DisableSpawner();
         spawnHelper.doneSpawning = false;
         bouncer.StartBouncing(); //sets bounceamount to 0
@@ -151,5 +150,6 @@ public class BossAI : MonoBehaviour
     {
         return state;
     }
+
 
 }

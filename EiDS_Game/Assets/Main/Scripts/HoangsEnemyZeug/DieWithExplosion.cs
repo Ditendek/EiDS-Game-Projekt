@@ -23,11 +23,12 @@ public class DieWithExplosion : MonoBehaviour
         }
     }
  
-public void Delete()
+    //Gets called from Explosion animation
+    public void Delete()
     {
         foreach (SpriteRenderer sprite in trailRenderer.GetCloneList())
         {
-            Destroy(sprite);
+            Destroy(sprite.gameObject);
         }
         Destroy(transform.parent.gameObject);
         Instantiate(deadBoss, transform.parent.position, Quaternion.identity);
