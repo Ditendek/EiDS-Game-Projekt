@@ -1,26 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DieWithExplosion : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject deadBoss;
-    private BossAI parent;
+    private Enemy parent;
     private Animator animator;
     NotMyTrailRenderer trailRenderer;
     private void Start()
     {
-        parent = transform.parent.GetComponent<BossAI>();
+        parent = transform.parent.GetComponent<Enemy>();
         animator = GetComponent<Animator>();
         trailRenderer = GetComponent<NotMyTrailRenderer>();
+        if (parent == null) Debug.Log("RIP");
     }
     // Update is called once per frame
     private void Update()
     {
-        if (parent.GetHealth() <= 0)
+        if (parent.GetEnemyHealth() <= 0)
         {
             Die();
         }
@@ -28,7 +25,6 @@ public class DieWithExplosion : MonoBehaviour
  
 public void Delete()
     {
-
         foreach (SpriteRenderer sprite in trailRenderer.GetCloneList())
         {
             Destroy(sprite);

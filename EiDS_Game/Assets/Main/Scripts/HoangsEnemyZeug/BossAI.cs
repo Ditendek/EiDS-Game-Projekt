@@ -1,26 +1,16 @@
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BossAI : MonoBehaviour
 {
-    public float maxHealth;
-    public float health;
-  //  public int damage;
     public float damagePhaseTimer;
-    // public Slider healthBar;
-    //public float maxSpeed;
- 
-    private Animator animator;
 
-    private float timeBtwDamage =0.2f;
+    private Animator animator;
     private Vector3 spawnPosition;
     private Rigidbody2D rb;
-    Bounce bouncer;
-    BossSpawner spawnHelper;
-    NotMyTrailRenderer trailRenderer; 
+    private Bounce bouncer;
+    private BossSpawner spawnHelper;
+    private NotMyTrailRenderer trailRenderer; 
 
     private bool isScaling = false;
     private bool doneScaling = false;
@@ -41,10 +31,7 @@ public class BossAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = transform.Find("BOSS_GFX").GetComponent<Animator>();
         trailRenderer = transform.Find("BOSS_GFX").GetComponent<NotMyTrailRenderer>();
-
         bouncer = transform.GetComponent<Bounce>();
-
-     
         spawnHelper = transform.GetComponent<BossSpawner>();
         spawnHelper.enabled = false;
         spawnHelper.SetStartPosition(spawnPosition);
@@ -54,9 +41,8 @@ public class BossAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
+
         CheckState();
-    //    if(GetState() == State.Bouncing) Debug.Log(rb.velocity.magnitude);
 
         switch (state)
         {
@@ -65,15 +51,15 @@ public class BossAI : MonoBehaviour
                 trailRenderer.enabled = true;
                 StartCoroutine(scaleOverTime(transform.Find("BOSS_GFX"), new Vector3(3, 3, 3), 10f));
                 break;
-             case State.Bouncing:             
+            case State.Bouncing:
                 bouncer.SetBounceMode(true);
-                trailRenderer.ClonesPerSecond  = 30;
+                trailRenderer.ClonesPerSecond = 30;
                 spawnHelper.enabled = false;
                 break;
             case State.Spawning:
                 bouncer.SetBounceMode(false);
                 trailRenderer.ClonesPerSecond = 0;
-                rb.velocity = new Vector2(0.1f,0.1f);
+                rb.velocity = new Vector2(0.1f, 0.1f);
                 if (triggerOnce)
                 {
                     animator.SetTrigger("run");
@@ -81,9 +67,9 @@ public class BossAI : MonoBehaviour
                     triggerOnce = false;
                 }
                 spawnHelper.enabled = true;
-                 
+
                 float positionThreshold = 0.1f;
-                if (Vector3.Distance(transform.position,spawnPosition) > positionThreshold  && transform.position.x > spawnPosition.x)
+                if (Vector3.Distance(transform.position, spawnPosition) > positionThreshold && transform.position.x > spawnPosition.x)
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
                 }
@@ -95,40 +81,13 @@ public class BossAI : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, spawnPosition, 0.025f);
                 break;
             case State.Damage:
-            {
-               rb.velocity = new Vector2(0,0);
-               break;
-            }
-        }
-        // give the player some time to recover before taking more damage
-        if (timeBtwDamage > 0)
-        {
-            timeBtwDamage -= Time.deltaTime;    
-        }
-
-    //    healthBar.value = health/maxHealth;
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            TakeDamage(1000);
+                {
+                    rb.velocity = new Vector2(0, 0);
+                    break;
+                }
         }
     }
-    
-    public void  TakeDamage(int damage)
-    {
-        if (GetState() == State.Spawning) return;
-        //Take damage itself for demo reasons
-        if (timeBtwDamage <= 0)
-        {
-            health -= damage;
-            timeBtwDamage = 0.2f;
-        }
-    }
- 
+
 
     private void CheckState()
     {
@@ -151,10 +110,8 @@ public class BossAI : MonoBehaviour
             state = State.Damage;
             StartCoroutine(Wait(damagePhaseTimer));
             return;
-
         }
-       
-        
+   
     }
     IEnumerator Wait(float seconds)
     {
@@ -168,12 +125,11 @@ public class BossAI : MonoBehaviour
     }
     IEnumerator scaleOverTime(Transform objectToScale, Vector3 toScale, float duration)
     {
-         if (isScaling)
+        if (isScaling)
         {
             yield break;
         }
         isScaling = true;
-
 
         Vector3 startScaleSize = objectToScale.localScale;
         while (scalingTimeCounter < duration)
@@ -190,18 +146,10 @@ public class BossAI : MonoBehaviour
         }
         isScaling = false;
     }
-    public float GetHealth()
-    {
-        return health;
-    }
-
-
  
     public State GetState()
     {
         return state;
     }
-
-
 
 }
