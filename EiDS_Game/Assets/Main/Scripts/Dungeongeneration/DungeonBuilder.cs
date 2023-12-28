@@ -21,12 +21,6 @@ public class DungeonBuilder : MonoBehaviour {
         BuildDungeon();
     }
 
-    public void Update() {
-        if(Input.GetKeyDown(KeyCode.Return)) {
-            BuildDungeon();
-        }
-    }
-
     public void BuildDungeon() {
         BuildDungeon(_dungeonLayoutGenerator, _roomLayoutGenerator);
     }

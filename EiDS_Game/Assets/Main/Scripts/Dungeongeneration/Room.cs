@@ -71,12 +71,14 @@ public class Room : MonoBehaviour {
                 GameObject otherDoor = otherRoom.transform.Find(doors[(i + 2) % 4]).gameObject;
                 otherRoomRoomScript.doors.Add(otherDoor);
 
-                thisDoor.AddComponent<Teleporter>().SetLinkedTeleporter(otherDoor);
-                otherDoor.AddComponent<Teleporter>().SetLinkedTeleporter(thisDoor);
+                thisDoor.AddComponent<Door>().SetLinkedDoor(otherDoor);
+                otherDoor.AddComponent<Door>().SetLinkedDoor(thisDoor);
 
-                float c = 80f / 256f;
+                /*float c = 80f / 256f;
                 thisDoor.GetComponent<SpriteRenderer>().color = new Color(c, c, c);
-                otherDoor.GetComponent<SpriteRenderer>().color = new Color(c, c, c);
+                otherDoor.GetComponent<SpriteRenderer>().color = new Color(c, c, c);*/
+                thisDoor.GetComponent<Door>().Open();
+                otherDoor.GetComponent<Door>().Open();
             }
         }
     }
@@ -98,7 +100,7 @@ public class Room : MonoBehaviour {
         minimapEquivalent.GetComponent<SpriteRenderer>().sprite = currentRoomMinimapSprite;
 
         foreach(GameObject doorToNextRoom in doors) {
-            Room nextRoom = doorToNextRoom.GetComponent<Teleporter>().GetLinkedTeleporter().transform.parent.gameObject.GetComponent<Room>();
+            Room nextRoom = doorToNextRoom.GetComponent<Door>().GetLinkedDoor().transform.parent.gameObject.GetComponent<Room>();
 
             if(nextRoom.minimapEquivalent == null) {
                 nextRoom.minimapEquivalent = new GameObject(nextRoom.name);

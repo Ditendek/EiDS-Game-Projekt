@@ -582,7 +582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -795,6 +795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room000_empty
       objectReference: {fileID: 0}
+    - target: {fileID: 3873379865098228484, guid: cd9fddaca08481e45b5a1b9437949496, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5772085601022388012, guid: cd9fddaca08481e45b5a1b9437949496, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -834,6 +838,10 @@ PrefabInstance:
     - target: {fileID: 5772085601022388012, guid: cd9fddaca08481e45b5a1b9437949496, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8963902817229510043, guid: cd9fddaca08481e45b5a1b9437949496, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
