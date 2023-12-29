@@ -39,4 +39,11 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(10);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DamageTrigger"))
+        {
+            TakeDamage(10);
+        }
+    }
 }
