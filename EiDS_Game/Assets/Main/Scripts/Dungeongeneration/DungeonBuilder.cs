@@ -38,6 +38,8 @@ public class DungeonBuilder : MonoBehaviour {
         dungeonLayoutGenerator.GetStartRoom().SetActive(true);
         dungeonLayoutGenerator.GetStartRoom().GetComponent<Room>().UpdateMinimap();
 
+        AstarPath.active.Scan();
+
         randomState = Random.state;
     }
 
