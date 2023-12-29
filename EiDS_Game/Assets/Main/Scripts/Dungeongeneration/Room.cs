@@ -71,12 +71,12 @@ public class Room : MonoBehaviour {
                 GameObject otherDoor = otherRoom.transform.Find(doors[(i + 2) % 4]).gameObject;
                 otherRoomRoomScript.doors.Add(otherDoor);
 
-                thisDoor.AddComponent<Door>().SetLinkedDoor(otherDoor);
-                otherDoor.AddComponent<Door>().SetLinkedDoor(thisDoor);
+                thisDoor.GetComponent<Door>().enabled = true;
+                otherDoor.GetComponent<Door>().enabled = true;
 
-                /*float c = 80f / 256f;
-                thisDoor.GetComponent<SpriteRenderer>().color = new Color(c, c, c);
-                otherDoor.GetComponent<SpriteRenderer>().color = new Color(c, c, c);*/
+                thisDoor.GetComponent<Door>().SetLinkedDoor(otherDoor);
+                otherDoor.GetComponent<Door>().SetLinkedDoor(thisDoor);
+
                 thisDoor.GetComponent<Door>().Open();
                 otherDoor.GetComponent<Door>().Open();
             }

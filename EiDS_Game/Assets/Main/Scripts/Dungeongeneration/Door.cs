@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour {
     [SerializeField]
-    private GameObject linkedDoor;
+    private GameObject linkedDoor = null;
     [SerializeField]
     private bool active = true;
     [SerializeField]
@@ -63,6 +63,7 @@ public class Door : MonoBehaviour {
         RoomToUnload.SetActive(false);
         RoomToLoad.SetActive(true);
         RoomToLoad.GetComponent<Room>().UpdateMinimap();
+        AstarPath.active.Scan();
     }
 
     public void Open() {
