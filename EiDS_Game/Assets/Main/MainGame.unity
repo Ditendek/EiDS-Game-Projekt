@@ -1442,8 +1442,9 @@ GameObject:
   - component: {fileID: 1310722408}
   - component: {fileID: 1310722410}
   - component: {fileID: 1310722409}
+  - component: {fileID: 1310722411}
   m_Layer: 0
-  m_Name: GFX
+  m_Name: RandomJumpSlime_GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1537,6 +1538,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1310722411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310722407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6c1361e2a6cf543a147dd17bf355fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1478363310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,12 +2629,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1904508145}
-  - component: {fileID: 1904508144}
   - component: {fileID: 1904508143}
   - component: {fileID: 1904508146}
+  - component: {fileID: 1904508147}
   m_Layer: 0
-  m_Name: NewEnemy
-  m_TagString: Untagged
+  m_Name: RandomJumpSlime
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2653,18 +2666,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1904508144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904508142}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdca21ee0ab9158419e54fbc3fb09e2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1904508145
 Transform:
   m_ObjectHideFlags: 0
@@ -2716,6 +2717,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.4064185}
   serializedVersion: 2
   m_Radius: 0.55367804
+--- !u!114 &1904508147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904508142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0957f8b7fe4c7cf4595bb4ceae4f7449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+  maxHealth: 50
 --- !u!1 &2047181101
 GameObject:
   m_ObjectHideFlags: 0
