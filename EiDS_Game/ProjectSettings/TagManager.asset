@@ -7,6 +7,7 @@ TagManager:
   - PowerUp_Bow
   - Enemy
   - Boss
+  - Heal
   layers:
   - Default
   - TransparentFX
