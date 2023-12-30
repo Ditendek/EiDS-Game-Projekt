@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2924129372209539854}
   - component: {fileID: 5626616257137026103}
   - component: {fileID: 865617534296236430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thunder
   m_TagString: DamageTrigger
   m_Icon: {fileID: 0}
