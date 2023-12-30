@@ -12,11 +12,14 @@ public class Room : MonoBehaviour {
     public Vector2Int position;
     public GameObject minimap = null;
     public GameObject minimapEquivalent = null;
+    public GameObject nextDungeonLoader = null;
     public Sprite currentRoomMinimapSprite;
     public Sprite enteredBeforeMinimapSprite;
     public Sprite notEnteredMinimapSprite;
+    public EnemyGroups enemyGroups;
     private bool isDiscovered = false;
     private bool isNextToDiscovered = false;
+    public bool isCleared = false;
 
     public bool IsDiscovered {
         get {
@@ -85,6 +88,33 @@ public class Room : MonoBehaviour {
 
     private Vector2Int GetDirectionToOtherRoom(Vector2Int position) {
         return position - this.position;
+    }
+
+    public void LoadEnemies() {
+        CloseDoors();
+
+        Instantiate(enemyGroups.enemieGroups[UnityEngine.Random.Range(0, enemyGroups.enemieGroups.Length)], new Vector2(0, 0), Quaternion.identity, this.transform);
+    }
+
+    public void CheckForEnemies() {
+        foreach(Transform child in this.transform) {
+            if(child.tag == "Enemy Group" && child.transform.childCount == 0) {
+                isCleared = true;
+                OpenDoors();
+            }
+        }
+    }
+
+    public void CloseDoors() {
+        foreach(GameObject door in doors) {
+            door.GetComponent<Door>().Close();
+        }
+    }
+
+    public void OpenDoors() {
+        foreach(GameObject door in doors) {
+            door.GetComponent<Door>().Open();
+        }
     }
 
     public void UpdateMinimap() {

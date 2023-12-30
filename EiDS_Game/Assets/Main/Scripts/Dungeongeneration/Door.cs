@@ -63,6 +63,11 @@ public class Door : MonoBehaviour {
         RoomToUnload.SetActive(false);
         RoomToLoad.SetActive(true);
         RoomToLoad.GetComponent<Room>().UpdateMinimap();
+
+        if(RoomToLoad.GetComponent<Room>().isCleared == false) {
+            RoomToLoad.GetComponent<Room>().LoadEnemies();
+        }
+
         AstarPath.active.Scan();
     }
 

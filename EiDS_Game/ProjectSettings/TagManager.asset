@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Boss
   - Heal
+  - Enemy Group
   layers:
   - Default
   - TransparentFX

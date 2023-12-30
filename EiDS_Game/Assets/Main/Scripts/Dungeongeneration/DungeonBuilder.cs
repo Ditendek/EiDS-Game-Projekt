@@ -36,9 +36,12 @@ public class DungeonBuilder : MonoBehaviour {
         dungeonLayoutGenerator.BuildRooms(roomLayoutGenerator);
         dungeonLayoutGenerator.DeactivateAllRooms();
         dungeonLayoutGenerator.GetStartRoom().SetActive(true);
-        dungeonLayoutGenerator.GetStartRoom().GetComponent<Room>().UpdateMinimap();
 
-        AstarPath.active.Scan();
+        Room startRoomRoomComponent = dungeonLayoutGenerator.GetStartRoom().GetComponent<Room>();
+        startRoomRoomComponent.UpdateMinimap();
+        startRoomRoomComponent.isCleared = true;
+
+        //AstarPath.active.Scan();
 
         randomState = Random.state;
     }

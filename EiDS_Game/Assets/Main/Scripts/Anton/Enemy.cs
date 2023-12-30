@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,17 @@ public class Enemy : MonoBehaviour
             {
                 bossMinion.RemoveFromSpawner();
             }
+
             Destroy(gameObject);
+            SendUpdateCheckToRoom();
+        }
+    }
+
+    private void SendUpdateCheckToRoom() {
+        foreach(Transform room in this.transform.root) {
+            if(room.gameObject.activeInHierarchy && room.TryGetComponent<Room>(out Room roomComponent)) {
+                roomComponent.CheckForEnemies();
+            }
         }
     }
 }
