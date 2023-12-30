@@ -14,20 +14,6 @@ public class Door : MonoBehaviour {
     [SerializeField]
     private Sprite closedDoorSprite;
 
-    private void Start() {
-        AddBoxCollider2DIfNotExistent();
-    }
-
-    protected void AddBoxCollider2DIfNotExistent() {
-        BoxCollider2D bc = this.GetComponent<BoxCollider2D>();
-
-        if(bc == null) {
-            bc = this.gameObject.AddComponent<BoxCollider2D>();
-        }
-
-        bc.isTrigger = true;
-    }
-
     public void SetLinkedDoor(GameObject linkedDoor) {
         this.linkedDoor = linkedDoor;
     }
@@ -72,12 +58,12 @@ public class Door : MonoBehaviour {
     }
 
     public void Open() {
-        GetComponent<SpriteRenderer>().sprite = openDoorSprite;
-        GetComponent<BoxCollider2D>().isTrigger = true;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = openDoorSprite;
+        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     public void Close() {
-        GetComponent<SpriteRenderer>().sprite = closedDoorSprite;
-        GetComponent<BoxCollider2D>().isTrigger = false;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = closedDoorSprite;
+        this.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
     }
 }

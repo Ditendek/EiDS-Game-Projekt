@@ -40,10 +40,9 @@ public class Enemy : MonoBehaviour
 
     private void SendUpdateCheckToRoom() {
         foreach(Transform room in this.transform.root) {
-            if(room.gameObject.activeInHierarchy && room.TryGetComponent<Room>(out Room roomComponent)) {
-                roomComponent.CheckForEnemies();
+            if(room.gameObject.activeInHierarchy) {
+                room.gameObject.GetComponent<Room>().CheckForEnemies();
             }
-          
         }
     }
 

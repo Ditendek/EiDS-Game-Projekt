@@ -98,7 +98,7 @@ public class Room : MonoBehaviour {
 
     public void CheckForEnemies() {
         foreach(Transform child in this.transform) {
-            if(child.tag == "Enemy Group" && child.transform.childCount == 0) {
+            if(child.tag == "Enemy Group" && child.transform.childCount <= 1) {
                 isCleared = true;
                 OpenDoors();
             }
