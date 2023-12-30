@@ -5,6 +5,7 @@ public class RandomJumps : MonoBehaviour
     private Rigidbody2D rb;
     public float jumpForce = 4f;
     private Vector2 randomDirection;
+    
     void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
@@ -19,7 +20,7 @@ public class RandomJumps : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
     }
-
+ 
     public void AdjustScale()
     {
         randomDirection = Random.insideUnitCircle.normalized;

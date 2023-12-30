@@ -16,6 +16,6 @@ public class ShootProjectile : MonoBehaviour
 private void shootProjectile_OnShoot(object sender, AimBeetle.OnShootEventArgs e)
     {
             Transform bulletTransform = Instantiate(pfBullet, e.gunEndPointPosition, Quaternion.identity);
-            bulletTransform.GetComponent<BulletShot>().SetUp(e.shootDirection);     
+            bulletTransform.GetComponent<CannonShot>().SetUp(e.shootDirection);     
     }
 }

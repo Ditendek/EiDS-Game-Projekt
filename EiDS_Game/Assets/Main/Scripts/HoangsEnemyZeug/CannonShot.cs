@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletShot : MonoBehaviour
+public class CannonShot : MonoBehaviour
 {
     private Vector3 shootDir;
     public float moveSpeed = 3f;
