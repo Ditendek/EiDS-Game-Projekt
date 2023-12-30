@@ -21,12 +21,6 @@ public class DungeonBuilder : MonoBehaviour {
         BuildDungeon();
     }
 
-    public void Update() {
-        if(Input.GetKeyDown(KeyCode.Return)) {
-            BuildDungeon();
-        }
-    }
-
     public void BuildDungeon() {
         BuildDungeon(_dungeonLayoutGenerator, _roomLayoutGenerator);
     }
@@ -43,6 +37,8 @@ public class DungeonBuilder : MonoBehaviour {
         dungeonLayoutGenerator.DeactivateAllRooms();
         dungeonLayoutGenerator.GetStartRoom().SetActive(true);
         dungeonLayoutGenerator.GetStartRoom().GetComponent<Room>().UpdateMinimap();
+
+        AstarPath.active.Scan();
 
         randomState = Random.state;
     }
