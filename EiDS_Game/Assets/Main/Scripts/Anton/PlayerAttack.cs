@@ -60,17 +60,5 @@ public class PlayerAttack : MonoBehaviour
             nextfire = Time.time + firerate;
             anim.Play(newState, 0, 0);
         }
-
-        
-
-
-       // canAttack = false;
-       // StartCoroutine(AttackCooldown());
     }
-
-   /* IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(0.25f);
-        canAttack = true;
-    }  */
 }
