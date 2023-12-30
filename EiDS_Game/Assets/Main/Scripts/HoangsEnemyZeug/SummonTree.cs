@@ -16,6 +16,8 @@ public class SummonTree : MonoBehaviour
 
     private void stabTarget(object sender, AimWithTree.OnStabEventArgs e)
     {
-         Instantiate(pfTree, new Vector3(e.stabTargetPosition.x,e.stabTargetPosition.y-1.5f,e.stabTargetPosition.z), Quaternion.identity);
+        Transform gameObject = Instantiate(pfTree, new Vector3(e.stabTargetPosition.x,e.stabTargetPosition.y-1.5f,e.stabTargetPosition.z), Quaternion.identity);
+        Transform parent = GameObject.Find("Disposables").transform;
+        gameObject.transform.parent = parent;
     }
 }

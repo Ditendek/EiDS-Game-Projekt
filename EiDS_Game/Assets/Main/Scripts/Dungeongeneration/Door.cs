@@ -34,6 +34,13 @@ public class Door : MonoBehaviour {
             }
 
             SetDiscoveryStatus();
+
+            GameObject disposables = GameObject.Find("Disposables");
+            for(int i = 0; i < disposables.transform.childCount; i++) {
+                GameObject child = disposables.transform.GetChild(i).gameObject;
+                Destroy(child);
+            }
+
             LoadNextRoom(this.transform.parent.gameObject, linkedDoor.transform.parent.gameObject);
         }
     }

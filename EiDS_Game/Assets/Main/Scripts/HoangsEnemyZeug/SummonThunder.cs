@@ -16,7 +16,10 @@ public class SummonThunder : AttackMode
     public override void Attack()
     {
         StartCoroutine(AttackAnimation());
-        Instantiate(pfThunder, PlayerMovement.PlayerPosition, Quaternion.identity);        
+        Transform gameObject = Instantiate(pfThunder, PlayerMovement.PlayerPosition, Quaternion.identity);
+
+        Transform parent = GameObject.Find("Disposables").transform;
+        gameObject.transform.parent = parent;
     }
     IEnumerator AttackAnimation()
     {

@@ -57,6 +57,8 @@ public class BulletSpawner : MonoBehaviour
             spawnedBullet.GetComponent<Bullet>().bulletLife = bulletLife;
             spawnedBullet.transform.rotation = spawnPosition.rotation;
 
+            Transform parent = GameObject.Find("Disposables").transform;
+            spawnedBullet.transform.parent = parent;
         }
     }
 }
