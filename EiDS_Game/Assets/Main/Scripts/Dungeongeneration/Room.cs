@@ -109,11 +109,19 @@ public class Room : MonoBehaviour {
         foreach(GameObject door in doors) {
             door.GetComponent<Door>().Close();
         }
+
+        if(nextDungeonLoader != null) {
+            nextDungeonLoader.SetActive(false);
+        }
     }
 
     public void OpenDoors() {
         foreach(GameObject door in doors) {
             door.GetComponent<Door>().Open();
+        }
+
+        if(nextDungeonLoader != null) {
+            nextDungeonLoader.SetActive(true);
         }
     }
 

@@ -20,5 +20,11 @@ public class LoadNextDungeon : MonoBehaviour {
             DungeonBuilder.GetComponent<DungeonBuilder>().IncreaseNumberOfRoomsBy(2);
             DungeonBuilder.GetComponent<DungeonBuilder>().BuildDungeon();
         }
+
+        GameObject disposables = GameObject.Find("Disposables");
+        for(int i = 0; i < disposables.transform.childCount; i++) {
+            GameObject child = disposables.transform.GetChild(i).gameObject;
+            Destroy(child);
+        }
     }
 }

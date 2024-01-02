@@ -31,7 +31,8 @@ public class DieWithExplosion : MonoBehaviour
             Destroy(sprite.gameObject);
         }
         Destroy(transform.parent.gameObject);
-        Instantiate(deadBoss, transform.parent.position, Quaternion.identity);
+        GameObject gameobject = Instantiate(deadBoss, transform.parent.position, Quaternion.identity);
+        gameobject.transform.parent = transform.parent.parent.transform;
     }
     private void Die()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DungeonBuilder : MonoBehaviour {
     public int seed = 0;
+    public int level { private set; get; } = 0;
     public GameObject minimap;
     private Random.State randomState;
 
@@ -41,9 +42,10 @@ public class DungeonBuilder : MonoBehaviour {
         startRoomRoomComponent.UpdateMinimap();
         startRoomRoomComponent.isCleared = true;
 
-        //AstarPath.active.Scan();
-
         randomState = Random.state;
+
+        level++;
+        //AstarPath.active.Scan();
     }
 
     /*
