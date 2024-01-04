@@ -1130,6 +1130,10 @@ MonoBehaviour:
   firerate: 0.45
   spriteRenderer: {fileID: 440053555}
   swordCollider: {fileID: 440053552}
+  front: 0
+  swordback: {fileID: 662632373}
+  swordleft: {fileID: 1480727699}
+  swordright: {fileID: 1405299207}
 --- !u!95 &440053554
 Animator:
   serializedVersion: 5
@@ -1424,6 +1428,10 @@ MonoBehaviour:
   firerate: 0.45
   spriteRenderer: {fileID: 662632375}
   swordCollider: {fileID: 662632372}
+  back: 0
+  swordfront: {fileID: 440053553}
+  swordleft: {fileID: 1480727699}
+  swordright: {fileID: 1405299207}
 --- !u!95 &662632374
 Animator:
   serializedVersion: 5
@@ -2441,6 +2449,10 @@ MonoBehaviour:
   firerate: 0.45
   spriteRenderer: {fileID: 1405299204}
   swordCollider: {fileID: 1405299206}
+  right: 0
+  swordfront: {fileID: 440053553}
+  swordleft: {fileID: 1480727699}
+  swordback: {fileID: 662632373}
 --- !u!1 &1480727693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2624,10 @@ MonoBehaviour:
   firerate: 0.45
   spriteRenderer: {fileID: 1480727698}
   swordCollider: {fileID: 1480727695}
+  left: 0
+  swordfront: {fileID: 440053553}
+  swordback: {fileID: 662632373}
+  swordright: {fileID: 1405299207}
 --- !u!1 &1480819154
 GameObject:
   m_ObjectHideFlags: 0

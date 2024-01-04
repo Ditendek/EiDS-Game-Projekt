@@ -10,6 +10,10 @@ public class SwordAttackFront : MonoBehaviour
     private bool damage = false;
     public SpriteRenderer spriteRenderer;
     public Collider2D swordCollider;
+    public bool front = false;
+    public SwordAttackBack swordback;
+    public SwordAttackLeft swordleft;
+    public SwordAttackRight swordright;
 
     void Start()
     {
@@ -21,9 +25,16 @@ public class SwordAttackFront : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool back = swordback.back;
+        bool left = swordleft.left;
+        bool right = swordright.right;
+
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ChangeAnimationState("Attack_Front_Sword");
+            if (!back && !left && !right)
+            {
+                ChangeAnimationState("Attack_Front_Sword");
+            }
         }
     }
 
@@ -50,5 +61,15 @@ public class SwordAttackFront : MonoBehaviour
     {
         spriteRenderer.enabled = false;
         swordCollider.enabled = false;
+    }
+
+    void SetTrue()
+    {
+        front = true;
+    }
+
+    void SetFalse()
+    {
+        front = false;
     }
 }
