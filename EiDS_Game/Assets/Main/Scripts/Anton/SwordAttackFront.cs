@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordAttack : MonoBehaviour
+public class SwordAttackFront : MonoBehaviour
 {
     private Animator anim;
     public float firerate;
@@ -21,9 +21,9 @@ public class SwordAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            ChangeAnimationState("Attack_Right_Sword");
+            ChangeAnimationState("Attack_Front_Sword");
         }
     }
 
