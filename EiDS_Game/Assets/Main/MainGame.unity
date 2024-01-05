@@ -1126,6 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordFront: {fileID: 440053550}
+  front: 0
 --- !u!1 &452904818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordBack: {fileID: 662632370}
+  back: 0
 --- !u!4 &720715393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7299058640678609871, guid: 81fb360c4478d7440a9b45324159d858, type: 3}
@@ -2125,10 +2127,10 @@ Transform:
   - {fileID: 452904819}
   - {fileID: 235473175}
   - {fileID: 519420032}
-  - {fileID: 1405299202}
   - {fileID: 1480727694}
   - {fileID: 440053551}
   - {fileID: 662632371}
+  - {fileID: 1405299202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1204231419
@@ -2204,6 +2206,11 @@ MonoBehaviour:
   rightSword: {fileID: 1405299203}
   frontSword: {fileID: 440053554}
   backSword: {fileID: 662632374}
+  _back: {fileID: 662632376}
+  _front: {fileID: 440053556}
+  _right: {fileID: 1405299208}
+  _left: {fileID: 1480727700}
+  firerate2: 0.45
 --- !u!114 &1204231423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2613,6 +2620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordRight: {fileID: 1405299201}
+  right: 0
 --- !u!1 &1463593427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,6 +2865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordLeft: {fileID: 1480727693}
+  left: 0
 --- !u!1 &1480819154
 GameObject:
   m_ObjectHideFlags: 0

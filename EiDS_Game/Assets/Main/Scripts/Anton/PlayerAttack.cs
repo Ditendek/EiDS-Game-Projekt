@@ -20,6 +20,13 @@ public class PlayerAttack : MonoBehaviour
     public Animator frontSword;
     public Animator backSword;
 
+    public SetBackFalse _back;
+    public SetFrontFalse _front;
+    public SetRightFalse _right;
+    public SetLeftFalse _left;
+
+    public float firerate2;
+    float nextfire2;
 
     void Start()
     {
@@ -33,6 +40,11 @@ public class PlayerAttack : MonoBehaviour
     
     void Update()
     {
+        bool front = _front.front;
+        bool left = _left.left;
+        bool right = _right.right;
+        bool back = _back.back;
+
         bool weaponswitch = weapon.weaponswitch;
 
         if (!weaponswitch)
@@ -56,25 +68,21 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (weaponswitch)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) && !front && !left && !right)
             {
-                swordBack.SetActive(true);
-                ChangeSwordAnimationState("Attack_Back_Sword", backSword);
+                ChangeSwordAnimationState("Attack_Back_Sword", backSword, swordBack);
             }
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow) && !back && !left && !right)
             {
-                swordFront.SetActive(true);
-                ChangeSwordAnimationState("Attack_Front_Sword", frontSword);
+                ChangeSwordAnimationState("Attack_Front_Sword", frontSword, swordFront);
             }
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow) && !front && !left && !back)
             {
-                swordRight.SetActive(true);
-                ChangeSwordAnimationState("Attack_Right_Sword", rightSword);
+                ChangeSwordAnimationState("Attack_Right_Sword", rightSword, swordRight);
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow) && !front && !back && !right)
             {
-                swordLeft.SetActive(true);
-                ChangeSwordAnimationState("Attack_Left_Sword", leftSword);
+                ChangeSwordAnimationState("Attack_Left_Sword", leftSword, swordLeft);
             }
         }
     }
@@ -88,11 +96,12 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    void ChangeSwordAnimationState(string newState, Animator anim)
+    void ChangeSwordAnimationState(string newState, Animator anim, GameObject _object)
     {
-        if (Time.time > nextfire)
+        if (Time.time > nextfire2)
         {
-            nextfire = Time.time + firerate;
+            _object.SetActive(true);
+            nextfire2 = Time.time + firerate2;
             anim.Play(newState, 0, 0);
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SetBackFalse : MonoBehaviour
 {
     public GameObject swordBack;
+    public bool back;
 
     void Start()
     {
@@ -14,5 +15,15 @@ public class SetBackFalse : MonoBehaviour
     void BackSetFalse()
     {
         swordBack.SetActive(false);
+    }
+
+    void number1()
+    {
+        back = true;
+    }
+
+    void number2()
+    {
+        back = false;
     }
 }

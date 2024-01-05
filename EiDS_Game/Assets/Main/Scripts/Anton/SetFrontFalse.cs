@@ -5,6 +5,7 @@ using UnityEngine;
 public class SetFrontFalse : MonoBehaviour
 {
     public GameObject swordFront;
+    public bool front;
 
     void Start()
     {
@@ -15,4 +16,14 @@ public class SetFrontFalse : MonoBehaviour
     {
         swordFront.SetActive(false);
     }
+    void number1()
+    {
+        front = true;
+    }
+
+    void number2()
+    {
+        front = false;
+    }
+
 }
