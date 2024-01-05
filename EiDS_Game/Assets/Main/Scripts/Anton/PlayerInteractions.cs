@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {
-   
+
     public Arrow arrowReference;
+
     void Start()
     {
      

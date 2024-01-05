@@ -968,8 +968,8 @@ GameObject:
   - component: {fileID: 440053551}
   - component: {fileID: 440053555}
   - component: {fileID: 440053554}
-  - component: {fileID: 440053553}
   - component: {fileID: 440053552}
+  - component: {fileID: 440053556}
   m_Layer: 0
   m_Name: Sword_Front
   m_TagString: Untagged
@@ -985,8 +985,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440053550}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.92387956, w: 0.38268343}
-  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.92387956, w: 0.38268343}
+  m_LocalPosition: {x: 0, y: -0.6999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1021,7 +1021,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1040,25 +1040,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 1
   m_UseAdjacentEndPoint: 1
---- !u!114 &440053553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440053550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ce257e52780dc49ab973a79368906a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firerate: 0.45
-  spriteRenderer: {fileID: 440053555}
-  swordCollider: {fileID: 440053552}
-  front: 0
-  swordback: {fileID: 662632373}
-  swordleft: {fileID: 1480727699}
-  swordright: {fileID: 1405299207}
 --- !u!95 &440053554
 Animator:
   serializedVersion: 5
@@ -1132,6 +1113,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &440053556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440053550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382a5a4187504a84691687c975bb4628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordFront: {fileID: 440053550}
 --- !u!1 &452904818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,8 +1335,8 @@ GameObject:
   - component: {fileID: 662632371}
   - component: {fileID: 662632375}
   - component: {fileID: 662632374}
-  - component: {fileID: 662632373}
   - component: {fileID: 662632372}
+  - component: {fileID: 662632376}
   m_Layer: 0
   m_Name: Sword_Back
   m_TagString: Untagged
@@ -1358,8 +1352,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662632370}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -0, y: 0.3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1394,7 +1388,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1413,25 +1407,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 1
   m_UseAdjacentEndPoint: 1
---- !u!114 &662632373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662632370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77cd1d27e36981b4eafdd17db1239db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firerate: 0.45
-  spriteRenderer: {fileID: 662632375}
-  swordCollider: {fileID: 662632372}
-  back: 0
-  swordfront: {fileID: 440053553}
-  swordleft: {fileID: 1480727699}
-  swordright: {fileID: 1405299207}
 --- !u!95 &662632374
 Animator:
   serializedVersion: 5
@@ -1505,6 +1480,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &662632376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662632370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74cc4d562bd29ee459fe92519d5277f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordBack: {fileID: 662632370}
 --- !u!4 &720715393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7299058640678609871, guid: 81fb360c4478d7440a9b45324159d858, type: 3}
@@ -2207,6 +2195,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firerate: 0.3
+  weapon: {fileID: 1204231426}
+  swordRight: {fileID: 1405299201}
+  swordLeft: {fileID: 1480727693}
+  swordFront: {fileID: 440053550}
+  swordBack: {fileID: 662632370}
+  leftSword: {fileID: 1480727697}
+  rightSword: {fileID: 1405299203}
+  frontSword: {fileID: 440053554}
+  backSword: {fileID: 662632374}
 --- !u!114 &1204231423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2459,7 +2456,7 @@ GameObject:
   - component: {fileID: 1405299204}
   - component: {fileID: 1405299203}
   - component: {fileID: 1405299206}
-  - component: {fileID: 1405299207}
+  - component: {fileID: 1405299208}
   m_Layer: 0
   m_Name: Sword_Right
   m_TagString: Untagged
@@ -2476,7 +2473,7 @@ Transform:
   m_GameObject: {fileID: 1405299201}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.331, y: -0.387, z: 0}
+  m_LocalPosition: {x: 0.33099997, y: -0.387, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2584,7 +2581,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2603,7 +2600,7 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 1
   m_UseAdjacentEndPoint: 1
---- !u!114 &1405299207
+--- !u!114 &1405299208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2612,16 +2609,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405299201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d026c6f0e20b5b8488ead860410f0594, type: 3}
+  m_Script: {fileID: 11500000, guid: 60990131f7779b9458f38d0f9d085103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firerate: 0.45
-  spriteRenderer: {fileID: 1405299204}
-  swordCollider: {fileID: 1405299206}
-  right: 0
-  swordfront: {fileID: 440053553}
-  swordleft: {fileID: 1480727699}
-  swordback: {fileID: 662632373}
+  swordRight: {fileID: 1405299201}
 --- !u!1 &1463593427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,7 +2700,7 @@ GameObject:
   - component: {fileID: 1480727698}
   - component: {fileID: 1480727697}
   - component: {fileID: 1480727695}
-  - component: {fileID: 1480727699}
+  - component: {fileID: 1480727700}
   m_Layer: 0
   m_Name: Sword_Left
   m_TagString: Untagged
@@ -2726,7 +2717,7 @@ Transform:
   m_GameObject: {fileID: 1480727693}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.331, y: -0.387, z: 0}
+  m_LocalPosition: {x: -0.33099997, y: -0.387, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2761,7 +2752,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2853,7 +2844,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1480727699
+--- !u!114 &1480727700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2862,16 +2853,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1480727693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e7f07946570b064dac577894b6a342f, type: 3}
+  m_Script: {fileID: 11500000, guid: 884b8a212fffcfd4a86a987b66eb32e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firerate: 0.45
-  spriteRenderer: {fileID: 1480727698}
-  swordCollider: {fileID: 1480727695}
-  left: 0
-  swordfront: {fileID: 440053553}
-  swordback: {fileID: 662632373}
-  swordright: {fileID: 1405299207}
+  swordLeft: {fileID: 1480727693}
 --- !u!1 &1480819154
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,6 +3289,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671128521}
   m_CullTransparentMesh: 1
+--- !u!1 &1695124753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695124754}
+  m_Layer: 0
+  m_Name: Swords
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1695124754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695124753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5285954, y: 0.017389864, z: -8.392877}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1699745809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,3 +3800,4 @@ SceneRoots:
   - {fileID: 1540193560}
   - {fileID: 1699745810}
   - {fileID: 858559229}
+  - {fileID: 1695124754}
