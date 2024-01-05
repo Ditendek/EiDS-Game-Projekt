@@ -6,6 +6,7 @@ public class PlayerInteractions : MonoBehaviour
 {
 
     public Arrow arrowReference;
+    public PlayerAttack attackReference;
 
     void Start()
     {
@@ -23,6 +24,12 @@ public class PlayerInteractions : MonoBehaviour
         {
             Destroy(collision.gameObject);
             arrowReference.damageIncrease += 2;
+        }
+
+        if (collision.gameObject.CompareTag("PowerUp_Sword"))
+        {
+            Destroy(collision.gameObject);
+            attackReference.damageIncrease += 2;
         }
     }
 }

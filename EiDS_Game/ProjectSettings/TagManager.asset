@@ -10,6 +10,7 @@ TagManager:
   - DamageTrigger
   - Heal
   - Enemy Group
+  - PowerUp_Sword
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public float firerate;
     float nextfire;
     public SwitchWeapon weapon;
+    public float damageIncrease = 0;
 
     //Swords
     public GameObject swordRight;
@@ -109,7 +110,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            enemyComponent.TakeDamage(10);
+            enemyComponent.TakeDamage(10 + damageIncrease);
         }
     }
 
