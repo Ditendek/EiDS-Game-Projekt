@@ -35,6 +35,10 @@ public class DieWithExplosion : MonoBehaviour
             Destroy(sprite.gameObject);
         }
         Destroy(transform.parent.gameObject);
+
+        GameObject pentagram = GameObject.Find("Pentagram");
+        Destroy(pentagram.gameObject);
+
         GameObject gameobject = Instantiate(deadBoss, transform.parent.position, Quaternion.identity);
         gameobject.transform.parent = transform.parent.parent.transform;
     }

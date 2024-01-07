@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     public float health, maxHealth;
-    private float itemDropPropability = 0.05f;
+    private float itemDropPropability = 0.5f;
     private BossMinion bossMinion;
     private BossAI boss;
     SpriteRenderer spriteRenderer;
