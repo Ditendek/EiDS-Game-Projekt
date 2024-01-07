@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthbar.SetHealth(currentHealth);
+        
+        if (currentHealth < 1)
+        {
+            Death();
+        }
     }
 
     void HealLife()
@@ -53,9 +59,17 @@ public class PlayerHealth : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Heal"))
         {
-            Destroy(collision.gameObject);
-            HealLife();
+            if (currentHealth < 100) 
+            {
+                Destroy(collision.gameObject);
+                HealLife();
+            }
         }
          
+    }
+
+    void Death()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
