@@ -29,6 +29,10 @@ public class NotMyTrailRenderer : MonoBehaviour
      
         for (int i = 0; i < clones.Count; i++)
         {
+            if(clones[i] == null) {
+                continue;
+            }
+            
             clones[i].color -= colorPerSecond * Time.deltaTime;
             clones[i].transform.localScale -= scalePerSecond * Time.deltaTime;
             if (clones[i].color.a <= 0f || clones[i].transform.localScale == Vector3.zero)
@@ -50,6 +54,10 @@ public class NotMyTrailRenderer : MonoBehaviour
         {
             {
                 var clone = new GameObject("trailClone");
+
+                Transform parent = GameObject.Find("Disposables").transform;
+                clone.transform.parent = parent;
+
                 clone.transform.position = tf.position;
                 clone.transform.localScale = tf.localScale;
                 var cloneRend = clone.AddComponent<SpriteRenderer>();           

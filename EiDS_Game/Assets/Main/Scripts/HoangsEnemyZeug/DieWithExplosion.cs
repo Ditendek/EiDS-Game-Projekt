@@ -28,6 +28,10 @@ public class DieWithExplosion : MonoBehaviour
     {
         foreach (SpriteRenderer sprite in trailRenderer.GetCloneList())
         {
+            if(sprite == null) {
+                continue;
+            }
+            
             Destroy(sprite.gameObject);
         }
         Destroy(transform.parent.gameObject);
