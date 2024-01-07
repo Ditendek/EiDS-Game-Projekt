@@ -15,6 +15,8 @@ public class DungeonBuilder : MonoBehaviour {
         _dungeonLayoutGenerator = GetComponent<TreeLikeDungeonLayoutGenerator>();
         _roomLayoutGenerator = GetComponent<RoomFromPrefabLayoutGenerator>();
 
+        seed = Random.Range(0, int.MaxValue);
+
         Random.InitState(seed);
         randomState = Random.state;
 
