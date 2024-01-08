@@ -3495,8 +3495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b01fa4a06e8e344b03e1823cc3e6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalRoomPrefabsFolderPath: Assets/Main/Rooms/normal
-  bossRoomPrefabsFolderPath: Assets/Main/Rooms/boss
+  normalRooms: {fileID: 11400000, guid: 9e6eacd38da81bb47b1f78f15813d290, type: 2}
+  bossRooms: {fileID: 11400000, guid: 16ffb34885660c049b101ff80b943945, type: 2}
   minimapGameObject: {fileID: 979914834}
   NextDungeonLoader: {fileID: 5818927530843915603, guid: 4e786cb51d4d9f14896e170bae95af06, type: 3}
 --- !u!114 &1870931505

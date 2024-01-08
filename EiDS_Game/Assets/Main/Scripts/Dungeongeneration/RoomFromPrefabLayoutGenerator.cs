@@ -1,44 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Tilemaps;
 using UnityEditor;
 using System;
 
 
 
 public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator {
-    public string normalRoomPrefabsFolderPath = "Assets/Main/Rooms/normal";
-    public string bossRoomPrefabsFolderPath = "Assets/Main/Rooms/boss";
+    public RoomsList normalRooms;
+    public RoomsList bossRooms;
     public GameObject minimapGameObject = null;
     public GameObject NextDungeonLoader = null;
 
-    private GameObject[] normalRoomPrefabs;
-    private GameObject[] bossRoomPrefabs;
     private List<GameObject> buildRooms;
     private string startRoom;
 
     public void ResetToDefaultState() {
-        LoadPrefabsFromFolder();
         buildRooms = new List<GameObject>();
         startRoom = null;
-    }
-
-    private void LoadPrefabsFromFolder() {
-        normalRoomPrefabs = LoadPrefabsFromFolder(normalRoomPrefabsFolderPath);
-        bossRoomPrefabs = LoadPrefabsFromFolder(bossRoomPrefabsFolderPath);
-    }
-
-    private GameObject[] LoadPrefabsFromFolder(string folderPath) {
-        string[] guids = AssetDatabase.FindAssets("t:Prefab", new[] { folderPath });
-        GameObject[] storage = new GameObject[guids.Length];
-
-        for(int i = 0; i < guids.Length; i++) {
-            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
-            storage[i] = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-        }
-
-        return storage;
     }
 
     public GameObject BuildRoom(string args) {
@@ -48,14 +27,14 @@ public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator
 
 
         if(IsEndRoom(formatedArgs)) {
-            newRoom = Instantiate(bossRoomPrefabs[UnityEngine.Random.Range(0, bossRoomPrefabs.Length)], new Vector2(0, 0), Quaternion.identity, this.transform);
+            newRoom = Instantiate(bossRooms.rooms[UnityEngine.Random.Range(0, bossRooms.rooms.Length)], new Vector2(0, 0), Quaternion.identity, this.transform);
             GameObject nextDungeonLoader = Instantiate(NextDungeonLoader, newRoom.transform);
             newRoom.GetComponent<Room>().nextDungeonLoader = nextDungeonLoader;
             nextDungeonLoader.GetComponent<LoadNextDungeon>().DungeonBuilder = this.gameObject;
             nextDungeonLoader.SetActive(false);
         }
         else {
-            newRoom = Instantiate(normalRoomPrefabs[UnityEngine.Random.Range(0, normalRoomPrefabs.Length)], new Vector2(0, 0), Quaternion.identity, this.transform);
+            newRoom = Instantiate(normalRooms.rooms[UnityEngine.Random.Range(0, normalRooms.rooms.Length)], new Vector2(0, 0), Quaternion.identity, this.transform);
         }
 
         newRoom.name = roomName;
