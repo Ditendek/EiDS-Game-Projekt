@@ -59,6 +59,7 @@ public class BossSpawner : MonoBehaviour
                             new Vector3(Random.Range(transform.position.x - spawnRangeX / 2, transform.position.x +  spawnRangeX / 2),
                                         Random.Range(transform.position.y - spawnRangeY / 2, transform.position.y + spawnRangeY / 2),
                                         0), Quaternion.identity);
+        newEnemy.transform.parent = transform.parent.parent;
         spawnedEnemies.Add(newEnemy);
         spawnCount++;
         if (spawnCount < maxSpawnAmount)
