@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour {
     public float health, maxHealth;
-    private float itemDropPropability = 0.5f;
+    public Dropables dropables;
     private BossMinion bossMinion;
     private BossAI boss;
     SpriteRenderer spriteRenderer;
@@ -31,21 +32,52 @@ public class Enemy : MonoBehaviour {
             if(bossMinion != null) {
                 bossMinion.RemoveFromSpawner();
             }
-            if(bossMinion == null && boss == null && UnityEngine.Random.Range(0f, 1f) <= itemDropPropability) {
-                print("drop");
-            }
-            if(boss == null)
+            if(boss == null) {
                 Destroy(gameObject);
+            }
+            if(dropables != null) {
+                DropItem();
+            }
+
             SendUpdateCheckToRoom();
         }
     }
 
+    private void DropItem() {
+        Dropables.Dropable dropable = dropables.getDropable();
+
+        if(dropable.dropableGameobject == null) {
+            return;
+        }
+
+        Transform room = getCurrentRoom();
+
+        for(int i = 0; i < dropable.numberOfDrops; i++) {
+            Vector2 randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 0.7f;
+            GameObject drop = Instantiate(dropable.dropableGameobject, (Vector2) transform.position + randomOffset, Quaternion.identity);
+            drop.transform.parent = room;
+        }
+    }
+
     private void SendUpdateCheckToRoom() {
-        foreach(Transform room in this.transform.root) {
+        Transform room = getCurrentRoom();
+        room.gameObject.GetComponent<Room>().CheckForEnemies();
+
+        /*foreach(Transform room in this.transform.root) {
             if(room.gameObject.activeInHierarchy) {
                 room.gameObject.GetComponent<Room>().CheckForEnemies();
             }
+        }*/
+    }
+
+    private Transform getCurrentRoom() {
+        foreach(Transform room in this.transform.root) {
+            if(room.gameObject.activeInHierarchy) {
+                return room;
+            }
         }
+
+        return null;
     }
 
     IEnumerator DamageAnimation() {

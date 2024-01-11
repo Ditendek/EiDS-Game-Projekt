@@ -299,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   maxHealth: 50
+  dropables: {fileID: 11400000, guid: bb99e1e8a3ac3804db2379f499f55cf1, type: 2}
 --- !u!1 &5021822450288573872
 GameObject:
   m_ObjectHideFlags: 0
