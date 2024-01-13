@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 3487773980599235471}
   - component: {fileID: 5404099370299407922}
   - component: {fileID: 5299348467562260527}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SlimyBossMinion
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -267,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 20
+  dropables: {fileID: 0}
 --- !u!114 &3487773980599235471
 MonoBehaviour:
   m_ObjectHideFlags: 0

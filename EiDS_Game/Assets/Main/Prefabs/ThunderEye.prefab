@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2770335172687877616}
   - component: {fileID: 9092627726682087086}
   - component: {fileID: 3219083633785913522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ThunderEye
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2796461700293769579}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0814962, y: -0.08519922, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4458161033810272240}
   - component: {fileID: 4945931314131222617}
   - component: {fileID: 1044875000681464092}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShootingSlime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3658375177876227722}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3994641, y: -1.4836916, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

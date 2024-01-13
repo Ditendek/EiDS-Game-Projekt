@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2863382129849694951}
   - component: {fileID: 176055096506845382}
   - component: {fileID: 971156332956100613}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: GreenBullet
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222347305882796078}
   - component: {fileID: 4909076520498711886}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: GreenBullet_GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
