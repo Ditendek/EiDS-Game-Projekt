@@ -37,7 +37,6 @@ public class PlayerHealth : MonoBehaviour
             damageMutiplier = (damageLevel - 1) * 0.5f + 1;
         }
 
-        print((int) -(damage * damageMutiplier));
         currentHealth -= (int) (damage * damageMutiplier);
         healthbar.SetHealth(currentHealth);
         
