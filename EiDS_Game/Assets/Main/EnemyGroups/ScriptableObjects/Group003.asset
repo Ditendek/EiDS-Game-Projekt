@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08353b6af99c8384d9292f3f17b5b1d3, type: 3}
-  m_Name: Group001
+  m_Name: Group003
   m_EditorClassIdentifier: 
   enemieGroups:
-  - {fileID: 7434616594625552565, guid: 4d1eb4554ee9a8f4f91d444aa3fe58e3, type: 3}
-  - {fileID: 7434616594625552565, guid: e99ac10fc3ac61a4bb2c34991dec953b, type: 3}
+  - {fileID: 7434616594625552565, guid: 4d7e99e2f089d3e428be46100f1876eb, type: 3}
