@@ -9,6 +9,10 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthbar;
+
+    private int damageLevel = 0;
+    private float damageMutiplier = 1f;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -25,7 +29,16 @@ public class PlayerHealth : MonoBehaviour
 
     void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        DungeonBuilder dungeon = GameObject.Find("Dungeon").GetComponent<DungeonBuilder>();
+
+        if(dungeon.level != damageLevel) {
+            damageLevel = dungeon.level;
+
+            damageMutiplier = (damageLevel - 1) * 0.5f + 1;
+        }
+
+        print((int) -(damage * damageMutiplier));
+        currentHealth -= (int) (damage * damageMutiplier);
         healthbar.SetHealth(currentHealth);
         
         if (currentHealth < 1)

@@ -13,6 +13,10 @@ public class Enemy : MonoBehaviour {
     Color damageColor = new Color(1f, 0.5f, 0.5f, 1f);
 
     private void Start() {
+        DungeonBuilder dungeon = GameObject.Find("Dungeon").GetComponent<DungeonBuilder>();
+        float healthMultiplier = (dungeon.level - 1) * 0.5f + 1;
+        maxHealth *= healthMultiplier;
+
         health = maxHealth;
         bossMinion = GetComponent<BossMinion>();
         boss = GetComponent<BossAI>();
@@ -67,12 +71,6 @@ public class Enemy : MonoBehaviour {
     private void SendUpdateCheckToRoom() {
         Transform room = getCurrentRoom();
         room.gameObject.GetComponent<Room>().CheckForEnemies();
-
-        /*foreach(Transform room in this.transform.root) {
-            if(room.gameObject.activeInHierarchy) {
-                room.gameObject.GetComponent<Room>().CheckForEnemies();
-            }
-        }*/
     }
 
     private Transform getCurrentRoom() {
