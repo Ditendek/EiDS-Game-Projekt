@@ -49,7 +49,7 @@ public class BossAI : MonoBehaviour
             default:
             case State.Scaling:
                 trailRenderer.enabled = true;
-                StartCoroutine(scaleOverTime(transform.Find("BOSS_GFX"), new Vector3(3, 3, 3), 10f));
+                StartCoroutine(scaleOverTime(transform.Find("BOSS_GFX"), new Vector3(3, 3, 3), 2f));
                 break;
             case State.Bouncing:
                 bouncer.SetBounceMode(true);

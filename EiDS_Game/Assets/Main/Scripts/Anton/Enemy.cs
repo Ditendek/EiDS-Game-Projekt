@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour {
             Vector2 randomOffset = Vector2.zero;
 
             if(dropable.numberOfDrops > 1) {
-                randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 1.3f;
+                randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 3f;
             }
 
             GameObject drop = Instantiate(dropable.dropableGameobject, (Vector2) transform.position + randomOffset, Quaternion.identity);
