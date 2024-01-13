@@ -28,7 +28,7 @@ public class DungeonBuilder : MonoBehaviour {
 
     void Update()
     {
-        ebene.text = "Ebene: " + level;
+        ebene.text = "Level: " + level;
     }
 
     public void BuildDungeon() {
