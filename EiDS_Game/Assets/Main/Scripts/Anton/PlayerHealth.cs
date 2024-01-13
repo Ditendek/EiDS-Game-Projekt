@@ -19,14 +19,6 @@ public class PlayerHealth : MonoBehaviour
         healthbar.SetMaxHealth(maxHealth);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TakeDamage(20);
-        }
-    }
-
     void TakeDamage(int damage)
     {
         DungeonBuilder dungeon = GameObject.Find("Dungeon").GetComponent<DungeonBuilder>();
