@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DungeonBuilder : MonoBehaviour {
     public int seed = 0;
@@ -10,6 +11,8 @@ public class DungeonBuilder : MonoBehaviour {
 
     private IDungeonLayoutGenerator _dungeonLayoutGenerator;
     private IRoomLayoutGenerator _roomLayoutGenerator;
+
+    public Text ebene;
 
     public void Start() {
         _dungeonLayoutGenerator = GetComponent<TreeLikeDungeonLayoutGenerator>();
@@ -21,6 +24,11 @@ public class DungeonBuilder : MonoBehaviour {
         randomState = Random.state;
 
         BuildDungeon();
+    }
+
+    void Update()
+    {
+        ebene.text = "Ebene: " + level;
     }
 
     public void BuildDungeon() {
