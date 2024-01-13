@@ -53,7 +53,12 @@ public class Enemy : MonoBehaviour {
         Transform room = getCurrentRoom();
 
         for(int i = 0; i < dropable.numberOfDrops; i++) {
-            Vector2 randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 0.7f;
+            Vector2 randomOffset = Vector2.zero;
+
+            if(dropable.numberOfDrops > 1) {
+                randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 0.7f;
+            }
+
             GameObject drop = Instantiate(dropable.dropableGameobject, (Vector2) transform.position + randomOffset, Quaternion.identity);
             drop.transform.parent = room;
         }

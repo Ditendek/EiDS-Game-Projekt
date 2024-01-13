@@ -9,11 +9,14 @@ using System;
 public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator {
     public RoomsList normalRooms;
     public RoomsList bossRooms;
+    public GameObject firstRoomFirstLevel;
+    public GameObject firstRoomOtherLevels;
     public GameObject minimapGameObject = null;
     public GameObject NextDungeonLoader = null;
 
     private List<GameObject> buildRooms;
     private string startRoom;
+    private bool firstGeneration = true;
 
     public void ResetToDefaultState() {
         buildRooms = new List<GameObject>();
@@ -33,7 +36,12 @@ public class RoomFromPrefabLayoutGenerator : MonoBehaviour, IRoomLayoutGenerator
             nextDungeonLoader.GetComponent<LoadNextDungeon>().DungeonBuilder = this.gameObject;
             nextDungeonLoader.SetActive(false);
         }
-        else {
+        else if(firstGeneration) {
+            firstGeneration = false;
+            newRoom = Instantiate(firstRoomFirstLevel, new Vector2(0, 0), Quaternion.identity, this.transform);
+        } else if(buildRooms.Count == 0) {
+            newRoom = Instantiate(firstRoomOtherLevels, new Vector2(0, 0), Quaternion.identity, this.transform);
+        } else {
             newRoom = Instantiate(normalRooms.rooms[UnityEngine.Random.Range(0, normalRooms.rooms.Length)], new Vector2(0, 0), Quaternion.identity, this.transform);
         }
 
