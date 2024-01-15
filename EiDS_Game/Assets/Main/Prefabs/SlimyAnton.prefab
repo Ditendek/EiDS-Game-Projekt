@@ -19,7 +19,7 @@ GameObject:
   m_Layer: 9
   m_Name: SlimyAnton
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -71,9 +71,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.640742}
+  m_Offset: {x: -0.010173202, y: -0.018010497}
   serializedVersion: 2
-  m_Radius: 0.5870144
+  m_Radius: 0.5200112
 --- !u!50 &6444278941750209677
 Rigidbody2D:
   serializedVersion: 4
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 50
   dropables: {fileID: 11400000, guid: 5a825071828ba4c41a0e74279f392f8f, type: 2}
 --- !u!114 &6952225795234335090
 MonoBehaviour:
@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 8462602026461802481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.582, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

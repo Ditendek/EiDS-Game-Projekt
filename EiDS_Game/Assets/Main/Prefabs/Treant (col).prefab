@@ -20,7 +20,7 @@ GameObject:
   m_Layer: 9
   m_Name: Treant (col)
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGFX: {fileID: 616311894175101400}
   attackRange: 4
-  attackRate: 2
+  attackRate: 2.5
   chaseRange: 10
 --- !u!114 &1037813558095570547
 MonoBehaviour:
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 110
   dropables: {fileID: 11400000, guid: 5a825071828ba4c41a0e74279f392f8f, type: 2}
 --- !u!1 &5579708636919828739
 GameObject:

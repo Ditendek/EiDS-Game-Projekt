@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1548879382352293668}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.013, y: 0.557, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -126,7 +126,7 @@ GameObject:
   m_Layer: 9
   m_Name: SlimyBossMinion
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -178,9 +178,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.640742}
+  m_Offset: {x: 0.0065488815, y: -0.028440833}
   serializedVersion: 2
-  m_Radius: 0.5870144
+  m_Radius: 0.5248022
 --- !u!50 &4754294114407067842
 Rigidbody2D:
   serializedVersion: 4
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 20
+  maxHealth: 80
   dropables: {fileID: 0}
 --- !u!114 &3487773980599235471
 MonoBehaviour:
