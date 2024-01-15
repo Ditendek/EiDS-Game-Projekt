@@ -6580,7 +6580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalRooms: {fileID: 11400000, guid: 9e6eacd38da81bb47b1f78f15813d290, type: 2}
   bossRooms: {fileID: 11400000, guid: 16ffb34885660c049b101ff80b943945, type: 2}
-  firstRoomFirstLevel: {fileID: 3873379865098228484, guid: a622ac26fb0eefc4c8477fabe3093bcf, type: 3}
+  firstRoomFirstLevel: {fileID: 3873379865098228484, guid: 2fb0cc71d5da6d24885a280b2b8ceb41, type: 3}
   firstRoomOtherLevels: {fileID: 3873379865098228484, guid: a622ac26fb0eefc4c8477fabe3093bcf, type: 3}
   minimapGameObject: {fileID: 979914834}
   NextDungeonLoader: {fileID: 5818927530843915603, guid: 4e786cb51d4d9f14896e170bae95af06, type: 3}
