@@ -4715,7 +4715,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fdd010cdf1d83fe4a9677bff5c643939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5083,7 +5083,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fdd010cdf1d83fe4a9677bff5c643939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5832,7 +5832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firerate: 0.3
   weapon: {fileID: 1204231426}
-  damageIncrease: 0
+  damageIncrease: 10
   swordRight: {fileID: 1405299201}
   swordLeft: {fileID: 1480727693}
   swordFront: {fileID: 440053550}
@@ -6182,7 +6182,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 41695ab0d694d684da74f9dfb8754f11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6475,7 +6475,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fdd010cdf1d83fe4a9677bff5c643939, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7188,7 +7188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a4ddf546cbab42ad2fcdb547a8ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 7
+  numberOfRooms: 3
   spawnPropability: 0.7
 --- !u!114 &1870931506
 MonoBehaviour:
