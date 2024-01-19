@@ -77,8 +77,7 @@ public class BossAI : MonoBehaviour
                     transform.localScale = new Vector3(1, 1, 1);
 
                 }
-                transform.position = Vector3.MoveTowards(transform.position, spawnPosition, 3f);
-               
+                transform.position = Vector3.MoveTowards(transform.position, spawnPosition, 0.025f);
                 break;
             case State.Damage:
                 {
