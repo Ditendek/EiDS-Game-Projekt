@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3940138034473113160}
   - component: {fileID: 4458161033810272240}
   - component: {fileID: 4945931314131222617}
-  - component: {fileID: 1044875000681464092}
+  - component: {fileID: 3607799361665246786}
   m_Layer: 9
   m_Name: ShootingSlime
   m_TagString: Enemy
@@ -75,11 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0957f8b7fe4c7cf4595bb4ceae4f7449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 0
   maxHealth: 50
   dropables: {fileID: 11400000, guid: 5a825071828ba4c41a0e74279f392f8f, type: 2}
---- !u!58 &1044875000681464092
-CircleCollider2D:
+--- !u!70 &3607799361665246786
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,9 +110,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.016399145, y: -0.1257267}
-  serializedVersion: 2
-  m_Radius: 0.35787416
+  m_Offset: {x: -0.024570905, y: -0.16790204}
+  m_Size: {x: 1.1474277, y: 0.81162626}
+  m_Direction: 1
 --- !u!1 &4597590506191062161
 GameObject:
   m_ObjectHideFlags: 0
