@@ -63,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Heal"))
         {
-            if (currentHealth < 100) 
+            if (currentHealth < maxHealth) 
             {
                 Destroy(collision.gameObject);
                 HealLife();

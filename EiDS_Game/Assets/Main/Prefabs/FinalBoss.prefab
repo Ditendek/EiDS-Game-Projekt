@@ -261,8 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBounces: 10
-  minSpeed: 10
-  maxSpeed: 20
+  minSpeed: 15
+  maxSpeed: 25
   trailRenderer: {fileID: 168791479417604932}
 --- !u!114 &6521910431237388339
 MonoBehaviour:
@@ -283,7 +283,7 @@ MonoBehaviour:
   spawnRangeX: 2
   spawnRangeY: 2
   enableSpawnerOnce: 1
-  start1stRoutine: 0
+  start1stRoutine: 1
   doneSpawning: 0
 --- !u!114 &3157565553093739070
 MonoBehaviour:

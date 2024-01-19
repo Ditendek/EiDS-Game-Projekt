@@ -297,7 +297,7 @@ MonoBehaviour:
   speed: 3
   spawnerType: 1
   firingRate: 0.2
-  rotationSpeed: 130
+  rotationSpeed: 150
   spawnPosition: {fileID: 640931267093799699}
 --- !u!1 &7780422906913656021
 GameObject:
