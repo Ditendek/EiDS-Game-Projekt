@@ -50,6 +50,7 @@ public class BossAI : MonoBehaviour
             case State.Scaling:
                 trailRenderer.enabled = true;
                 StartCoroutine(scaleOverTime(transform.Find("BOSS_GFX"), new Vector3(3, 3, 3), 2f));
+
                 break;
             case State.Bouncing:
                 bouncer.SetBounceMode(true);
@@ -128,6 +129,7 @@ public class BossAI : MonoBehaviour
         {
             yield break;
         }
+        rb.bodyType = RigidbodyType2D.Kinematic;
         isScaling = true;
 
         Vector3 startScaleSize = objectToScale.localScale;
@@ -144,6 +146,7 @@ public class BossAI : MonoBehaviour
             yield return null;
         }
         isScaling = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
  
     public State GetState()

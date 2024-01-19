@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51edf1cfa253324b90a4108b4d34bd2, type: 3}
-  m_Name: NormalRooms
+  m_Script: {fileID: 11500000, guid: 08353b6af99c8384d9292f3f17b5b1d3, type: 3}
+  m_Name: TEST_GROUP
   m_EditorClassIdentifier: 
-  rooms:
-  - {fileID: 3873379865098228484, guid: 3ba5f56493c271c47b3f5627c65f7431, type: 3}
+  enemieGroups:
+  - {fileID: 7434616594625552565, guid: 3f4629f64860f65499ab02ebab3d10a3, type: 3}
