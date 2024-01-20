@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2762536115123928497}
   - component: {fileID: 5872015864857381245}
   - component: {fileID: 5292922352781450236}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: NextDungeonLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}

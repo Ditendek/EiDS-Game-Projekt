@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BossRooms
   m_EditorClassIdentifier: 
   rooms:
-  - {fileID: 3873379865098228484, guid: 92633b40107423b4cbc9fba0f7ce8058, type: 3}
+  - {fileID: 3873379865098228484, guid: c08a1dd333815e24889477dc04cac86c, type: 3}
