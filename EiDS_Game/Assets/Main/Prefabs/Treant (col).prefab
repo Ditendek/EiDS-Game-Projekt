@@ -87,7 +87,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 2
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   enemyGFX: {fileID: 616311894175101400}
-  speed: 600
+  speed: 800
   nextWaypointDistance: 1
   seeker: {fileID: 8376086579010037016}
 --- !u!114 &8322195794553678889
@@ -160,9 +160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyGFX: {fileID: 616311894175101400}
-  attackRange: 4
+  attackRange: 6.9
   attackRate: 2.5
-  chaseRange: 10
+  chaseRange: 11.45
 --- !u!114 &1037813558095570547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 110
+  maxHealth: 60
   dropables: {fileID: 11400000, guid: 5a825071828ba4c41a0e74279f392f8f, type: 2}
 --- !u!1 &5579708636919828739
 GameObject:

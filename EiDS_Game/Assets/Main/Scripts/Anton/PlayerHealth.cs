@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
 
     void HealLife()
     {
-        currentHealth += 10;
+        currentHealth += 15;
         healthbar.SetHealth(currentHealth);
     }
 

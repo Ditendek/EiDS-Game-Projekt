@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c610acec3cbf69468cea51dfdb33cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePhaseTimer: 5
+  damagePhaseTimer: 4
   state: 0
   triggerOnce: 1
 --- !u!114 &7289077836845589074
@@ -260,9 +260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f27c30d886851a40879f122b7318cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBounces: 10
+  maxBounces: 12
   minSpeed: 15
-  maxSpeed: 25
+  maxSpeed: 20
   trailRenderer: {fileID: 168791479417604932}
 --- !u!114 &6521910431237388339
 MonoBehaviour:
@@ -278,10 +278,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedEnemies: []
   slimeBossPrefab: {fileID: 7377893948213993588, guid: 9203b40f068c62e4987cecd4d6eda5f1, type: 3}
-  spawnInterval: 0.5
+  spawnInterval: 1
   maxSpawnAmount: 3
-  spawnRangeX: 2
-  spawnRangeY: 2
+  spawnRangeX: 4
+  spawnRangeY: 4
   enableSpawnerOnce: 1
   start1stRoutine: 1
   doneSpawning: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 500
+  maxHealth: 450
   dropables: {fileID: 11400000, guid: bb99e1e8a3ac3804db2379f499f55cf1, type: 2}
 --- !u!1 &5021822450288573872
 GameObject:

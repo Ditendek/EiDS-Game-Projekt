@@ -4,7 +4,8 @@ public class Bounce : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rb;
-
+    private CircleCollider2D  col;
+    private PhysicsMaterial2D material;
     private bool bouncing;
     private int amountOfBounces = 0;
     public int maxBounces;
@@ -19,6 +20,8 @@ public class Bounce : MonoBehaviour
     void Awake()
     {
         animator = transform.Find("BOSS_GFX").GetComponent<Animator>();
+        col =  transform.GetComponent<CircleCollider2D>();
+        material = col.sharedMaterial;
         bouncing = false;
         rb = GetComponent<Rigidbody2D>();   
     }
@@ -35,6 +38,16 @@ public class Bounce : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!bouncing) return;
+        col.sharedMaterial = material;
+        if (LayerMask.LayerToName(other.gameObject.layer).Equals("Bullet"))
+        {
+            col.sharedMaterial = null;
+            return;
+        }
+      
+
+                
+        
         amountOfBounces++;
         speed = lastVelocity.magnitude;
         direction = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);

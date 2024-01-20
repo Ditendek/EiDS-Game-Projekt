@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 100
+  maxHealth: 55
   dropables: {fileID: 11400000, guid: 5a825071828ba4c41a0e74279f392f8f, type: 2}
 --- !u!114 &6952225795234335090
 MonoBehaviour:
@@ -174,9 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyGFX: {fileID: 3843138909087448262}
-  attackRange: 20
+  attackRange: 3
   attackRate: 1.7
-  chaseRange: 15
+  chaseRange: 15.9
 --- !u!114 &7166092992000033204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bec24decc34bdc44938498b8fe759a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 300
+  dashForce: 400
 --- !u!1 &8462602026461802481
 GameObject:
   m_ObjectHideFlags: 0

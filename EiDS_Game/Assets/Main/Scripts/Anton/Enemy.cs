@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
 
     private void Start() {
         DungeonBuilder dungeon = GameObject.Find("Dungeon").GetComponent<DungeonBuilder>();
-        float healthMultiplier = (dungeon.level - 1) * 0.5f + 1;
+        float healthMultiplier = (dungeon.level - 1) * 0.2f + 1;
         maxHealth *= healthMultiplier;
 
         health = maxHealth;

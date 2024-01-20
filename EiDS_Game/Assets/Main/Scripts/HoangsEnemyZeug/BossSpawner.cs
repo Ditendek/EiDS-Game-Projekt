@@ -34,7 +34,7 @@ public class BossSpawner : MonoBehaviour
 
         if (bossAI.GetState() == BossAI.State.Spawning &&
             enableSpawnerOnce &&
-            transform.position == startPosition)
+            Vector3.Distance(transform.position, startPosition)<1f)
         {
             rb.velocity = new Vector2(0, 0);
             EnableSpawner();
@@ -42,10 +42,11 @@ public class BossSpawner : MonoBehaviour
         }
 
 
-        if (start1stRoutine)
+        if (start1stRoutine && Vector3.Distance(transform.position, startPosition) < 1f)
         {
             start1stRoutine = false;
             animator.SetTrigger("spawn-phase");
+
             StartCoroutine(spawnEnemy(spawnInterval, slimeBossPrefab));
             return;
         }

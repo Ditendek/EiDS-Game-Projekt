@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   enemyGFX: {fileID: 1772235305035310066}
-  speed: 505
+  speed: 520
   nextWaypointDistance: 1
   seeker: {fileID: 3150833303485179742}
 --- !u!114 &334258620459294508
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  maxHealth: 80
+  maxHealth: 70
   dropables: {fileID: 0}
 --- !u!114 &3487773980599235471
 MonoBehaviour:
@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyGFX: {fileID: 1772235305035310066}
-  attackRange: 25
-  attackRate: 1.7
+  attackRange: 3.73
+  attackRate: 1.42
   chaseRange: 15
 --- !u!114 &5404099370299407922
 MonoBehaviour:
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bec24decc34bdc44938498b8fe759a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 500
+  dashForce: 520
 --- !u!114 &5299348467562260527
 MonoBehaviour:
   m_ObjectHideFlags: 0
