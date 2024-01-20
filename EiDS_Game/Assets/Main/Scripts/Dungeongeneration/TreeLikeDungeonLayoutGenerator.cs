@@ -10,6 +10,7 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
 
     private string[] _roomBuildArgs;
     private GameObject[] _rooms;
+    private int currentNumberOfRooms;
 
     public void ResetToDefaultState() {
         _roomBuildArgs = new string[numberOfRooms];
@@ -22,15 +23,27 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
 
         int halfGridSize = gridSize / 2;
         Vector2Int startRoomPosition = new(halfGridSize, halfGridSize);
-
+        
         GenerationLoop(roomAtPosition, startRoomPosition);
+
+        if(currentNumberOfRooms <= 1) {
+            Vector2Int[] directions = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+            Vector2Int roomPosition = startRoomPosition + directions[Random.Range(0, 4)];
+
+            List<Vector2Int> neighboringRooms = GetNumberOfNeighboringRooms(roomPosition, roomAtPosition);
+            AddNewRoomToListOfRooms(currentNumberOfRooms, roomPosition, neighboringRooms);
+            roomAtPosition[roomPosition.x, roomPosition.y] = true;
+            currentNumberOfRooms++;
+        }
+
+        AddEndKeyWordToLastRoom();
     }
 
     private void GenerationLoop(bool[,] roomAtPosition, Vector2Int startRoomPosition) {
         Queue<Vector2Int> roomQueue = new();
         roomQueue.Enqueue(startRoomPosition);
         
-        for(int currentNumberOfRooms = 0; currentNumberOfRooms < _roomBuildArgs.Length && roomQueue.Count != 0;) {
+        for(currentNumberOfRooms = 0; currentNumberOfRooms < _roomBuildArgs.Length && roomQueue.Count != 0;) {
             Vector2Int roomPosition = roomQueue.Dequeue();
             List<Vector2Int> neighboringRooms = GetNumberOfNeighboringRooms(roomPosition, roomAtPosition);
 
@@ -44,8 +57,6 @@ public class TreeLikeDungeonLayoutGenerator : MonoBehaviour, IDungeonLayoutGener
 
             GetNewPossibleRooms(roomQueue, roomPosition, roomAtPosition);
         }
-
-        AddEndKeyWordToLastRoom();
     }
 
     private void AddEndKeyWordToLastRoom() {
