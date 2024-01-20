@@ -297,7 +297,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +0
+  m_Text: '+5
+
+'
 --- !u!222 &29155271
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8469,6 +8471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce5f772e11bc2846998ce3fb60b8e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bowcounter: 0
+  swordcounter: 5
   arrowReference: {fileID: 5753509701516346977, guid: cbc71230727526247a62149a16141662, type: 3}
   attackReference: {fileID: 1204231422}
   bowText: {fileID: 1550161133}

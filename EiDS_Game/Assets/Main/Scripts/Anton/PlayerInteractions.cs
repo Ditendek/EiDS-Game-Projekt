@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerInteractions : MonoBehaviour
 {
-    private int bowcounter;
-    private int swordcounter;
+    public int bowcounter;
+    public int swordcounter;
 
     public Arrow arrowReference;
     public PlayerAttack attackReference;
@@ -14,11 +14,6 @@ public class PlayerInteractions : MonoBehaviour
     public Text bowText;
     public Text swordText;
 
-    void Start()
-    {
-        bowcounter = 0;
-        swordcounter = 0;
-    }
 
     void Update()
     {

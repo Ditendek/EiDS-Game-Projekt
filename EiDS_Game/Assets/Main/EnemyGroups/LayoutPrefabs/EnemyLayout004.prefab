@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921671561865945128}
   m_Layer: 0
-  m_Name: TEST_LAYOUT
+  m_Name: EnemyLayout004
   m_TagString: Enemy Group
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

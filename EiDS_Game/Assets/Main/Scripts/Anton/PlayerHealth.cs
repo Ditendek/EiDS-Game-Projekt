@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         if(dungeon.level != damageLevel) {
             damageLevel = dungeon.level;
 
-            damageMutiplier = (damageLevel - 1) * 0.5f + 1;
+            damageMutiplier = (damageLevel - 1) * 0.25f + 1;
         }
 
         currentHealth -= (int) (damage * damageMutiplier);
