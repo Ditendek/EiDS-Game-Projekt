@@ -25094,7 +25094,7 @@ MonoBehaviour:
   currentRoomMinimapSprite: {fileID: 21300000, guid: 46f8610674fefb642b5c48339b72b2f4, type: 3}
   enteredBeforeMinimapSprite: {fileID: 21300000, guid: 736d0bd516a5e5642be0e8ae716178bc, type: 3}
   notEnteredMinimapSprite: {fileID: 21300000, guid: 3bc43163dc5a7f54da76eff1995b1cd3, type: 3}
-  enemyGroups: {fileID: 11400000, guid: 0e4fb33cf8d1fa6438de55ae859e5315, type: 2}
+  enemyGroups: {fileID: 11400000, guid: d70af364e3dd81548b345f12f78bc793, type: 2}
   isCleared: 0
 --- !u!1 &3989404979956805949
 GameObject:
