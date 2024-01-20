@@ -59,7 +59,9 @@ public class Enemy : MonoBehaviour {
         for(int i = 0; i < dropable.numberOfDrops; i++) {
             Vector2 randomOffset = Vector2.zero;
 
-            if(dropable.numberOfDrops > 1) {
+            if(dropable.numberOfDrops == 2) {
+                randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 1f;
+            } else if(dropable.numberOfDrops > 2) {
                 randomOffset = UnityEngine.Random.insideUnitCircle.normalized * 3f;
             }
 

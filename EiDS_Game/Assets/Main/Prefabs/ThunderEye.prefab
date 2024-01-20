@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGFX: {fileID: 4479556550687347541}
   attackRange: 5
-  attackRate: 3
+  attackRate: 2
   chaseRange: 15
 --- !u!114 &9092627726682087086
 MonoBehaviour:

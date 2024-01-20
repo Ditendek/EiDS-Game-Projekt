@@ -26,5 +26,5 @@ MonoBehaviour:
     numberOfDrops: 1
     ratio: 3
   - dropableGameobject: {fileID: 1539711353184975073, guid: 81fb360c4478d7440a9b45324159d858, type: 3}
-    numberOfDrops: 3
+    numberOfDrops: 2
     ratio: 1
