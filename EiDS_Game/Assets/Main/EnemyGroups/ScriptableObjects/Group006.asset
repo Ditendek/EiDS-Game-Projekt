@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08353b6af99c8384d9292f3f17b5b1d3, type: 3}
-  m_Name: Group003
+  m_Name: Group006
   m_EditorClassIdentifier: 
   enemieGroups:
+  - {fileID: 7434616594625552565, guid: 4d1eb4554ee9a8f4f91d444aa3fe58e3, type: 3}
+  - {fileID: 7434616594625552565, guid: e99ac10fc3ac61a4bb2c34991dec953b, type: 3}
   - {fileID: 7434616594625552565, guid: 4d7e99e2f089d3e428be46100f1876eb, type: 3}
   - {fileID: 7434616594625552565, guid: 3f4629f64860f65499ab02ebab3d10a3, type: 3}
+  - {fileID: 7434616594625552565, guid: 52a6d53e13bbd1a448789ef8f2ac956c, type: 3}
+  - {fileID: 7434616594625552565, guid: 3cd1377ef29afc4409563874427a034c, type: 3}
+  - {fileID: 7434616594625552565, guid: dcaefc4c045ebd74899289a6d80319c0, type: 3}
+  - {fileID: 7434616594625552565, guid: 24ed0ceb27a4e8e42a53ec1b26472078, type: 3}
   - {fileID: 7434616594625552565, guid: 4461dfaadc27c9d4d894e5680f80ccf8, type: 3}
-  - {fileID: 7434616594625552565, guid: ce717df1952a2e5478624bc27c929fd8, type: 3}
-  - {fileID: 7434616594625552565, guid: ae857d52ccef07a4f8c4ddcf3a3ffbd7, type: 3}
-  - {fileID: 7434616594625552565, guid: 7b61785b266b44943a6f1228d844cbec, type: 3}

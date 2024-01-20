@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08353b6af99c8384d9292f3f17b5b1d3, type: 3}
-  m_Name: TEST_GROUP
+  m_Name: Group005
   m_EditorClassIdentifier: 
   enemieGroups:
-  - {fileID: 7434616594625552565, guid: 24ed0ceb27a4e8e42a53ec1b26472078, type: 3}
+  - {fileID: 7434616594625552565, guid: 4d1eb4554ee9a8f4f91d444aa3fe58e3, type: 3}
+  - {fileID: 7434616594625552565, guid: 3cd1377ef29afc4409563874427a034c, type: 3}
+  - {fileID: 7434616594625552565, guid: dcaefc4c045ebd74899289a6d80319c0, type: 3}
+  - {fileID: 7434616594625552565, guid: a6459b988e78da6488c825fd7d3c8c09, type: 3}
